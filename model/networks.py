@@ -82,7 +82,12 @@ def init_weights(net, init_type='kaiming', scale=1, std=0.02):
 def define_G(opt):
     self_opt=opt['self']
     model_opt = opt['model']
-    from .diffusion_3D import diffusion, unet
+    if model_opt['netDim'] == 2:
+        from .diffusion_2D import diffusion, unet
+    elif model_opt['netDim'] == 3:
+        from .diffusion_3D import diffusion, unet
+    else:
+        raise('model dimension error')
 
 
     # if 'dual' in self_opt or 'vmdiff' in self_opt:

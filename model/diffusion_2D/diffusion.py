@@ -74,26 +74,27 @@ def noise_like(shape, device, repeat=False):
 
 class GaussianDiffusion(nn.Module):
     def __init__(
-        self,
-        denoise_fn,
-        stn,
-        channels=3,
-        loss_type='l1',
-        conditional=True,
-        schedule_opt=None,
-        loss_lambda=1,
-        gamma=1
+            self,
+            denoise_fn,
+            stn,
+            channels=3,
+            loss_type='l1',
+            conditional=True,
+            schedule_opt=None,
+            loss_lambda=1,
+            gamma=1
     ):
         super().__init__()
         self.channels = channels
         self.denoise_fn = denoise_fn
-        self.stn=stn
+        self.stn = stn
         self.conditional = conditional
         self.loss_type = loss_type
         self.lambda_L = loss_lambda
-        self.gamma=gamma
+        self.gamma = gamma
         if schedule_opt is not None:
             pass
+
 
     def set_loss(self, device):
         if self.loss_type == 'l1':
@@ -102,9 +103,8 @@ class GaussianDiffusion(nn.Module):
             self.loss_func = nn.MSELoss(reduction='mean').to(device)
         else:
             raise NotImplementedError()
-        self.loss_ncc = loss.crossCorrelation3D(1, kernel=(9, 9, 9),gamma=self.gamma).to(device)
+        self.loss_ncc = loss.crossCorrelation2D(1, kernel=(9, 9), gamma=self.gamma).to(device)
         self.loss_reg = loss.gradientLoss("l2").to(device)
-
 
     def set_new_noise_schedule(self, schedule_opt, device):
         to_torch = partial(torch.tensor, dtype=torch.float32, device=device)
@@ -172,7 +172,7 @@ class GaussianDiffusion(nn.Module):
         posterior_variance = extract(self.posterior_variance, t, x_t.shape)
         posterior_log_variance_clipped = extract(
             self.posterior_log_variance_clipped, t, x_t.shape)
-        return posterior_mean, posterior_variance, posterior_log_variance_clipped
+        return posterior_mean, posterior_variance, posterior_log_variance_clipped    
 
     def p_mean_variance(self, x, t, clip_denoised: bool, condition_x=None):
         if condition_x is not None:
@@ -190,8 +190,8 @@ class GaussianDiffusion(nn.Module):
 
         model_mean, posterior_variance, posterior_log_variance = self.q_posterior(
             x_start=x_recon, x_t=x, t=t)
-        return model_mean, posterior_variance, posterior_log_variance
-
+        return model_mean, posterior_variance, posterior_log_variance    
+    
     def p_sample_loop(self, x_in):
         device = self.betas.device
         noise=None
@@ -199,24 +199,15 @@ class GaussianDiffusion(nn.Module):
         x_m = x_in[:, :1]
         x_f = x_in[:, 1:]
         # print(np.min(x_m.cpu().numpy()))
-        b, c, d, h, w = x_m.shape
+        b, c, h, w = x_m.shape
         with torch.no_grad():
             t = torch.full((b,), 0, device=device, dtype=torch.long)
             _,flow = self.denoise_fn(torch.cat([x, x_f], dim=1),x_m, t)
-            b, c, d, h, w = x_f.shape
+            b, c, h, w = x_f.shape
             deform=self.stn(x_m,flow)
             return deform, flow, deform, flow
-
-    def p_sample(self, x, t, clip_denoised=True, repeat_noise=False, condition_x=None):
-        b, *_, device = *x.shape, x.device
-        model_mean, _, model_log_variance = self.p_mean_variance(
-            x=x, t=t, clip_denoised=clip_denoised, condition_x=condition_x)
-        noise = noise_like(x.shape, device, repeat_noise)
-        # no noise when t == 0
-        nonzero_mask = (1 - (t == 0).float()).reshape(b,
-                                                      *((1,) * (len(x.shape) - 1)))
-        return model_mean + nonzero_mask * (0.5 * model_log_variance).exp() * noise
-    
+        
+        
     @torch.no_grad()
     def registration(self, x_in):
         return self.p_sample_loop(x_in)
@@ -229,11 +220,10 @@ class GaussianDiffusion(nn.Module):
             extract(self.sqrt_one_minus_alphas_cumprod,
                     t, x_start.shape) * noise
         )
-
-
+    
     def p_losses(self, x_in, noise=None):
         x_start = x_in['F']
-        [b, c, d, h, w] = x_start.shape
+        [b, c, h, w] = x_start.shape
         t = torch.randint(0, self.num_timesteps, (b,),
                           device=x_start.device).long()
         noise = default(noise, lambda: torch.randn_like(x_start))
@@ -245,7 +235,7 @@ class GaussianDiffusion(nn.Module):
         l_smt_fw = self.loss_reg(flow_fw) * 20
         loss =  l_sim_fw + l_smt_fw+l_pix_fw
         l_pix_fw=l_sim_fw
-        x_recon_fw=x_start
+        x_recon_fw=x_start #why?
         return [x_recon_fw, output_fw, flow_fw], [l_pix_fw, l_sim_fw, l_smt_fw, loss]
 
 

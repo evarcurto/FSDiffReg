@@ -33,7 +33,7 @@ if __name__ == "__main__":
     phase = 'train'
     dataset_opt=opt['datasets']['train']
     batchSize = opt['datasets']['train']['batch_size']
-    train_set = Data.create_dataset_3D(dataset_opt, phase)
+    train_set = Data.create_dataset_2D_MyDataset(dataset_opt, phase)
     train_loader = Data.create_dataloader(train_set, dataset_opt, phase)
     training_iters = int(ceil(train_set.data_len / float(batchSize)))
     print('Dataset Initialized')
