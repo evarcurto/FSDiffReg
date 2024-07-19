@@ -89,6 +89,18 @@ class DDPM(BaseModel):
 
     def get_current_log(self):
         return self.log_dict
+    
+    def get_current_visuals_train_bt(self):
+        out_dict = OrderedDict()
+        if self.centered:
+            min_max = (-1, 1)
+        else:
+            min_max = (0, 1)
+        out_dict['M'] = Metrics.tensor2im_batch(self.data['M'].detach().float().cpu(), min_max=min_max)
+        out_dict['F'] = Metrics.tensor2im_batch(self.data['F'].detach().float().cpu(), min_max=min_max)
+        out_dict['out_M'] = Metrics.tensor2im_batch(self.out_M.detach().float().cpu(), min_max=(0, 1))
+        out_dict['flow'] = Metrics.tensor2im_batch(self.flow.detach().float().cpu(), min_max=min_max)
+        return out_dict
 
     def get_current_registration(self):
         out_dict = OrderedDict()

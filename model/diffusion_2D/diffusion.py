@@ -74,15 +74,15 @@ def noise_like(shape, device, repeat=False):
 
 class GaussianDiffusion(nn.Module):
     def __init__(
-            self,
-            denoise_fn,
-            stn,
-            channels=3,
-            loss_type='l1',
-            conditional=True,
-            schedule_opt=None,
-            loss_lambda=1,
-            gamma=1
+        self,
+        denoise_fn,
+        stn,
+        channels=3,
+        loss_type='l1',
+        conditional=True,
+        schedule_opt=None,
+        loss_lambda=1,
+        gamma=1
     ):
         super().__init__()
         self.channels = channels
@@ -95,7 +95,6 @@ class GaussianDiffusion(nn.Module):
         if schedule_opt is not None:
             pass
 
-
     def set_loss(self, device):
         if self.loss_type == 'l1':
             self.loss_func = nn.L1Loss(reduction='mean').to(device)
@@ -105,6 +104,7 @@ class GaussianDiffusion(nn.Module):
             raise NotImplementedError()
         self.loss_ncc = loss.crossCorrelation2D(1, kernel=(9, 9), gamma=self.gamma).to(device)
         self.loss_reg = loss.gradientLoss("l2").to(device)
+
 
     def set_new_noise_schedule(self, schedule_opt, device):
         to_torch = partial(torch.tensor, dtype=torch.float32, device=device)
@@ -172,8 +172,8 @@ class GaussianDiffusion(nn.Module):
         posterior_variance = extract(self.posterior_variance, t, x_t.shape)
         posterior_log_variance_clipped = extract(
             self.posterior_log_variance_clipped, t, x_t.shape)
-        return posterior_mean, posterior_variance, posterior_log_variance_clipped    
-
+        return posterior_mean, posterior_variance, posterior_log_variance_clipped
+    
     def p_mean_variance(self, x, t, clip_denoised: bool, condition_x=None):
         if condition_x is not None:
             with torch.no_grad():
@@ -190,7 +190,7 @@ class GaussianDiffusion(nn.Module):
 
         model_mean, posterior_variance, posterior_log_variance = self.q_posterior(
             x_start=x_recon, x_t=x, t=t)
-        return model_mean, posterior_variance, posterior_log_variance    
+        return model_mean, posterior_variance, posterior_log_variance
     
     def p_sample_loop(self, x_in):
         device = self.betas.device
@@ -208,6 +208,15 @@ class GaussianDiffusion(nn.Module):
             return deform, flow, deform, flow
         
         
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @torch.no_grad()
     def registration(self, x_in):
         return self.p_sample_loop(x_in)
@@ -220,6 +229,7 @@ class GaussianDiffusion(nn.Module):
             extract(self.sqrt_one_minus_alphas_cumprod,
                     t, x_start.shape) * noise
         )
+    
     
     def p_losses(self, x_in, noise=None):
         x_start = x_in['F']

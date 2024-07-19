@@ -8,6 +8,7 @@ from einops import rearrange
 def exists(x):
     return x is not None
 
+
 def default(val, d):
     if exists(val):
         return val
@@ -36,6 +37,7 @@ class Swish(nn.Module):
     def forward(self, x):
         return x * torch.sigmoid(x)
     
+    
 class Upsample(nn.Module):
     def __init__(self, dim):
         super().__init__()
@@ -59,7 +61,7 @@ class Downsample(nn.Module):
 
 
 class Block(nn.Module):
-    def __init__(self, dim, dim_out, groups=32, dropout=0):
+    def __init__(self, dim, dim_out, groups=4, dropout=0):
         super().__init__()
         self.block = nn.Sequential(
             nn.GroupNorm(groups, dim),
@@ -94,12 +96,12 @@ class ResnetBlock(nn.Module):
     
 
 class SelfAttention(nn.Module):
-    def __init__(self, in_channel, n_head=1):
+    def __init__(self, in_channel, n_head=4):
         super().__init__()
 
         self.n_head = n_head
 
-        self.norm = nn.GroupNorm(32, in_channel)
+        self.norm = nn.GroupNorm(4, in_channel)
         self.qkv = nn.Conv2d(in_channel, in_channel * 3, 1, bias=False)
         self.out = nn.Conv2d(in_channel, in_channel, 1)
 
@@ -127,12 +129,12 @@ class SelfAttention(nn.Module):
         
 #SelfAttention_fuse adapted to 2D
 class SelfAttention_fuse(nn.Module):
-    def __init__(self, in_channel, n_head=1):
+    def __init__(self, in_channel, n_head=4):
         super().__init__()
 
         self.n_head = n_head
 
-        self.norm = nn.GroupNorm(32, in_channel)
+        self.norm = nn.GroupNorm(4, in_channel)
         self.out = nn.Conv2d(in_channel, in_channel, 1)
         self.defmgen=nn.Conv2d(in_channel,3,3,padding=1)
         self.nonlinear=nn.Conv2d(3, 3, 3, padding=1)
@@ -178,17 +180,17 @@ class ResnetBlocWithAttn(nn.Module):
 
 class UNet(nn.Module):
     def __init__(
-            self,
-            in_channel=6,
-            out_channel=3,
-            inner_channel=32,
-            channel_mults=(1, 2, 4, 8, 8),
-            attn_res=(8),
-            res_blocks=3,
-            dropout=0,
-            with_time_emb=True,
-            image_size=128,
-            opt=None
+        self,
+        in_channel=6,
+        out_channel=3,
+        inner_channel=32,
+        channel_mults=(1, 2, 4, 8, 8),
+        attn_res=(8),
+        res_blocks=3,
+        dropout=0,
+        with_time_emb=True,
+        image_size=128,
+        opt=None
     ):
         super().__init__()
 
@@ -248,7 +250,7 @@ class UNet(nn.Module):
                 ups_regis.append(ResnetBlocWithAttn(
                     regischannel, channel_mult, time_emb_dim=time_dim, dropout=dropout, with_attn=use_attn))
                 ups_adapt.append(
-                    SelfAttention_fuse(channel_mult)
+                    SelfAttention_fuse(channel_mult)  #################################################
                 )
                 pre_channel = channel_mult
             if not is_last:
@@ -263,10 +265,15 @@ class UNet(nn.Module):
         self.final_conv = Block(pre_channel, default(out_channel, in_channel))
         # self.final_attn=SelfAttention_fuse(1)
         self.final_conv_defm = Block(pre_channel+1,3,groups=3)
+        #print('------------------pre channel------------------------')
+        #print(pre_channel)
+        #self.final_conv_defm = Block(pre_channel,2,groups=32)    ################################!!!!!!!!Em dúvida!!!!!!!
 
 
     def forward(self, x,x_m, time):
-        input_size=(x.size(2),x.size(3),x.size(4))
+        #print('--------x size----------------')
+        #print(x.size())
+        input_size=(x.size(2),x.size(3))   ################ entrada unet: in_channel
         t = self.time_mlp(time) if exists(self.time_mlp) else None
         feats = []
         for layer in self.downs:
@@ -290,7 +297,7 @@ class UNet(nn.Module):
                 feat=feats.pop()
                 x_1 = layerd(torch.cat((x_1, feat), dim=1), t)
                 x_2 = layerr(torch.cat((x_2, feat,x_1), dim=1), t)
-                defm_=layera(x_2,x_1,x_1,input_size)
+                defm_=layera(x_2,x_1,x_1,input_size)     ###############################################
                 defm.append(defm_)
             else:
                 x_1 = layerd(x_1)
@@ -300,3 +307,101 @@ class UNet(nn.Module):
         defm=torch.cat([defm,self.final_conv_defm(torch.cat((x_2,recon), dim=1)).unsqueeze_(1)],dim=1)
         defm=torch.mean(defm,dim=1)
         return recon,defm
+    
+class Dense2DSpatialTransformer(nn.Module):
+    def __init__(self):
+        super(Dense2DSpatialTransformer, self).__init__()
+
+    def forward(self, input1, input2):
+        #input1 = (input1[:, :1]+1)/2.0
+        return self._transform(input1, input2[:,0], input2[:,1])
+        
+    def _transform(self, input1, dHeight, dWidth):
+            batchSize = dHeight.shape[0]
+
+            hgt = dHeight.shape[1]
+            wdt = dHeight.shape[2]
+
+            H_mesh, W_mesh = self._meshgrid(hgt, wdt)
+
+            H_mesh = H_mesh.unsqueeze_(0).expand(batchSize, hgt, wdt)
+            W_mesh = W_mesh.unsqueeze_(0).expand(batchSize, hgt, wdt)
+
+            H_upmesh = dHeight + H_mesh
+            W_upmesh = dWidth + W_mesh
+            
+            return self._interpolate(input1, H_upmesh, W_upmesh)
+        
+    def _meshgrid(self, hgt, wdt):
+        h_t = torch.matmul(torch.linspace(0.0, hgt-1.0, hgt).unsqueeze_(1), torch.ones((1,wdt))).cuda()
+
+        w_t = torch.matmul(torch.ones((hgt,1)), torch.linspace(0.0, wdt-1.0, wdt).unsqueeze_(1).transpose(1,0)).cuda()
+
+        return h_t, w_t
+    
+    def _interpolate(self, input, H_upmesh, W_upmesh):
+        nbatch = input.shape[0]
+        nch    = input.shape[1]
+        height = input.shape[2]
+        width  = input.shape[3]
+
+        img = torch.zeros(nbatch, nch, height+2, width+2).cuda()
+        img[:, :, 1:-1, 1:-1] = input
+        img[:, :, 0, 1:-1] = input[:, :, 0, :]
+        img[:, :, -1, 1:-1] = input[:, :, -1, :]
+        img[:, :, 1:-1, 0] = input[:, :, :, 0]
+        img[:, :, 1:-1, -1] = input[:, :, :, -1]
+        img[:, :, 0, 0] = input[:, :, 0, 0]
+        img[:, :, 0, -1] = input[:, :, 0, -1]
+        img[:, :, -1, 0] = input[:, :, -1, 0]
+        img[:, :, -1, -1] = input[:, :,-1, -1]
+
+        imgHgt = img.shape[2]
+        imgWdt = img.shape[3]
+
+        # H_upmesh, W_upmesh = [H, W] -> [BHW,]
+        H_upmesh = H_upmesh.view(-1).float()+1.0  # (BHW,)
+        W_upmesh = W_upmesh.view(-1).float()+1.0  # (BHW,)
+
+        # H_upmesh, W_upmesh -> Clamping
+        hf = torch.floor(H_upmesh).int()
+        hc = hf + 1
+        wf = torch.floor(W_upmesh).int()
+        wc = wf + 1
+
+        hf = torch.clamp(hf, 0, imgHgt-1)  # (BHW,)
+        hc = torch.clamp(hc, 0, imgHgt-1)  # (BHW,)
+        wf = torch.clamp(wf, 0, imgWdt-1)  # (BHW,)
+        wc = torch.clamp(wc, 0, imgWdt-1)  # (BHW,)
+
+        # Find batch indexes
+        rep = torch.ones([height*width, ]).unsqueeze_(1).transpose(1, 0).cuda()
+        bHW = torch.matmul((torch.arange(0, nbatch).float()*imgHgt*imgWdt).unsqueeze_(1).cuda(), rep).view(-1).int()
+
+        # Box updated indexes
+        W = imgWdt
+        # x: W, y: H, z: D
+        idx_00 = bHW + hf*W + wf
+        idx_10 = bHW + hf*W + wc
+        idx_01 = bHW + hc*W + wf
+        idx_11 = bHW + hc*W + wc
+
+        # Box values
+        img_flat = img.view(-1, nch).float()  # (BDHW,C) //// C=1
+
+        val_00 = torch.index_select(img_flat, 0, idx_00.long())
+        val_10 = torch.index_select(img_flat, 0, idx_10.long())
+        val_01 = torch.index_select(img_flat, 0, idx_01.long())
+        val_11 = torch.index_select(img_flat, 0, idx_11.long())
+
+        dHeight = hc.float() - H_upmesh
+        dWidth  = wc.float() - W_upmesh
+
+        wgt_00 = (dHeight*dWidth).unsqueeze_(1)
+        wgt_10 = (dHeight * (1-dWidth)).unsqueeze_(1)
+        wgt_01 = ((1-dHeight) * dWidth).unsqueeze_(1)
+        wgt_11 = ((1-dWidth) * (1-dHeight)).unsqueeze_(1)
+
+        output = val_00*wgt_00 + val_10*wgt_10 + val_01*wgt_01 + val_11*wgt_11
+        output = output.view(nbatch, height, width, nch).permute(0, 3, 1, 2)  #B, C, H, W
+        return output

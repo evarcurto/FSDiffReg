@@ -4,6 +4,7 @@
     "gpu_ids": [
         0
     ],
+    "display_port": 8097,
     "path": {
         "checkpoint": "checkpoint",
         "resume_state": null
@@ -12,7 +13,7 @@
         "centered": true,
         "train": {
             "name": "Torus",
-            "dataroot": "/media/eva-isr/SSD/torus_color_cam1/", 
+            "dataroot": "/media/eva-isr/SSD/torus_color/", 
             "batch_size": 1,
             "num_workers": 16,
             "use_shuffle": true
@@ -56,7 +57,8 @@
             "encoder_nc": [64,128,256,512,1024],
             "decoder_nc": [1024,512,256,128,64,2]
         },
-        "loss_lambda": 0.5
+        "loss_lambda": 0.5,
+        "gamma": 1
     },
     "train": {
         "n_epoch": 200,

@@ -1,5 +1,5 @@
 import os
-os.environ["CUDA_VISIBLE_DEVICES"]="2"
+#os.environ["CUDA_VISIBLE_DEVICES"]="0"
 import torch
 import data as Data
 import model as Model
@@ -9,12 +9,14 @@ import core.logger as Logger
 import os
 from math import *
 import time
-from torch.utils import tensorboard
+#from torch.utils import tensorboard
+from util.visualizer import Visualizer
+
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('-c', '--config', type=str, default='config/.json',
+    parser.add_argument('-c', '--config', type=str, default='config/train_2D.json',
                         help='JSON file for configuration')
     parser.add_argument('-gpu', '--gpu_ids', type=str, default=None)
 
@@ -23,7 +25,10 @@ if __name__ == "__main__":
     opt = Logger.parse(args)
     # Convert to NoneDict, which return None for missing key.
     opt = Logger.dict_to_nonedict(opt)
-    writer = tensorboard.SummaryWriter(opt['path']["tb_logger"]+'/..')
+    visualizer = Visualizer(opt)
+
+    #writer = tensorboard.SummaryWriter(opt['path']["tb_logger"],'/tensorboard/')
+    
     # logging
     torch.backends.cudnn.enabled = True
     torch.backends.cudnn.benchmark = True
@@ -67,10 +72,15 @@ if __name__ == "__main__":
             if (istep + 1) % opt['train']['print_freq'] == 0:
                 logs = diffusion.get_current_log()
                 t = (time.time() - iter_start_time) / batchSize
-                writer.add_scalar("train/l_pix", logs['l_pix'], (istep+1)*current_epoch)
-                writer.add_scalar("train/l_sim", logs['l_sim'], (istep+1)*current_epoch)
-                writer.add_scalar("train/l_smt", logs['l_smt'], (istep+1)*current_epoch)
-                writer.add_scalar("train/l_tot", logs['l_tot'], (istep+1)*current_epoch)
+                visualizer.print_current_errors(current_epoch, istep+1, training_iters, logs, t, 'Train')
+                visualizer.plot_current_errors(current_epoch, (istep+1) / float(training_iters), logs)
+                visuals = diffusion.get_current_visuals_train_bt()
+                visualizer.display_current_results(visuals, current_epoch, istep, True)
+
+                #writer.add_scalar("train/l_pix", logs['l_pix'], (istep+1)*current_epoch)
+                #writer.add_scalar("train/l_sim", logs['l_sim'], (istep+1)*current_epoch)
+                #writer.add_scalar("train/l_smt", logs['l_smt'], (istep+1)*current_epoch)
+                #writer.add_scalar("train/l_tot", logs['l_tot'], (istep+1)*current_epoch)
               
         if current_epoch % opt['train']['save_checkpoint_epoch'] == 0:
             diffusion.save_network(current_epoch, current_step)

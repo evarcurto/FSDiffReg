@@ -84,8 +84,10 @@ def define_G(opt):
     model_opt = opt['model']
     if model_opt['netDim'] == 2:
         from .diffusion_2D import diffusion, unet
+        stn=unet.Dense2DSpatialTransformer()
     elif model_opt['netDim'] == 3:
         from .diffusion_3D import diffusion, unet
+        stn=unet.Dense3DSpatialTransformer()
     else:
         raise('model dimension error')
 
@@ -103,7 +105,7 @@ def define_G(opt):
         opt=self_opt
     )
 
-    stn=unet.Dense3DSpatialTransformer()
+    #stn=unet.Dense3DSpatialTransformer()
     netG = diffusion.GaussianDiffusion(
         model_score,stn,
         channels=model_opt['diffusion']['channels'],

@@ -11,9 +11,11 @@ class gradientLoss(nn.Module):
         self.penalty = penalty
 
     def forward(self, input):
+
         dH = torch.abs(input[:, :, 1:, :] - input[:, :, :-1, :])
         dW = torch.abs(input[:, :, :, 1:] - input[:, :, :, :-1])
         if(self.penalty == "l2"):
+
             dH = dH * dH
             dW = dW * dW
         loss = (torch.mean(dH) + torch.mean(dW)) / 2.0
@@ -54,3 +56,4 @@ class crossCorrelation2D(nn.Module):
 
         loss = -1.0 * torch.mean(cc)
         return loss
+    
