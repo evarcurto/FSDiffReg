@@ -1,0 +1,104 @@
+_wandb:
+    value:
+        cli_version: 0.18.5
+        m: []
+        python_version: 3.11.9
+        t:
+            "1":
+                - 1
+                - 41
+                - 55
+            "2":
+                - 1
+                - 41
+                - 55
+            "3":
+                - 3
+                - 16
+                - 23
+                - 55
+            "4": 3.11.9
+            "5": 0.18.5
+            "8":
+                - 5
+            "12": 0.18.5
+            "13": linux-x86_64
+datasets:
+    value:
+        centered: true
+        train:
+            batch_size: 1
+            dataroot: /media/eva-isr/SSD/torus_color/
+            name: Torus
+            num_workers: 16
+            use_shuffle: true
+display_port:
+    value: 8097
+distributed:
+    value: false
+gpu_ids:
+    value:
+        - 0
+model:
+    value:
+        beta_schedule:
+            train:
+                linear_end: 0.01
+                linear_start: 1e-06
+                n_timestep: 2000
+                schedule: linear
+        diffusion:
+            channels: 9
+            conditional: true
+            image_size: 128
+        field:
+            decoder_nc:
+                - 1024
+                - 512
+                - 256
+                - 128
+                - 64
+                - 2
+            encoder_nc:
+                - 64
+                - 128
+                - 256
+                - 512
+                - 1024
+            in_channel: 2
+        finetune_norm: false
+        gamma: 1
+        loss_lambda: 0.5
+        netDim: 2
+        unet:
+            attn_res:
+                - 10
+            channel_multiplier:
+                - 1
+                - 2
+                - 4
+                - 4
+            dropout: 0
+            in_channel: 3
+            inner_channel: 8
+            out_channel: 1
+            res_blocks: 1
+        which_model_G: ddpm
+name:
+    value: FSDiffReg_2D
+path:
+    value:
+        checkpoint: experiments/FSDiffReg_2D_241031_172129/checkpoint
+        experiments_root: experiments/FSDiffReg_2D_241031_172129
+        resume_state: null
+phase:
+    value: train
+train:
+    value:
+        n_epoch: 100
+        optimizer:
+            lr: 5e-05
+            type: adam
+        print_freq: 1
+        save_checkpoint_epoch: 100
+        val_freq: 10

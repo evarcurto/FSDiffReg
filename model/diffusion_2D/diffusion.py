@@ -6,6 +6,8 @@ from functools import partial
 import numpy as np
 from . import loss
 
+import torchvision
+
 def _warmup_beta(linear_start, linear_end, n_timestep, warmup_frac):
     betas = linear_end * np.ones(n_timestep, dtype=np.float64)
     warmup_time = int(n_timestep * warmup_frac)
@@ -174,16 +176,11 @@ class GaussianDiffusion(nn.Module):
             self.posterior_log_variance_clipped, t, x_t.shape)
         return posterior_mean, posterior_variance, posterior_log_variance_clipped
     
-    def p_mean_variance(self, x, t, clip_denoised: bool, condition_x=None):
-        if condition_x is not None:
-            with torch.no_grad():
-                score = self.denoise_fn(torch.cat([condition_x, x], dim=1), t)
+    def p_mean_variance(self, x, x_m, t, clip_denoised: bool, condition_x=None):
 
-            x_recon = self.predict_start_from_noise(
-                x, t=t, noise=score)
-        else:
-            x_recon = self.predict_start_from_noise(
-                x, t=t, noise=self.denoise_fn(x, t))
+        recon, score = self.denoise_fn(torch.cat([condition_x, x], dim=1), x_m, t)
+
+        x_recon = self.predict_start_from_noise(x, t=t, noise=recon)
 
         if clip_denoised:
             x_recon.clamp_(-1., 1.)
@@ -192,34 +189,87 @@ class GaussianDiffusion(nn.Module):
             x_start=x_recon, x_t=x, t=t)
         return model_mean, posterior_variance, posterior_log_variance
     
-    def p_sample_loop(self, x_in):
+    def p_sample(self, x, x_m, t, clip_denoised=True, repeat_noise=False, condition_x=None):
+        b, *_, device = *x.shape, x.device
+        model_mean, _, model_log_variance = self.p_mean_variance(
+            x=x, x_m=x_m, t=t, clip_denoised=clip_denoised, condition_x=condition_x)
+        noise = noise_like(x.shape, device, repeat_noise)
+        # no noise when t == 0
+        nonzero_mask = (1 - (t == 0).float()).reshape(b,
+                                                      *((1,) * (len(x.shape) - 1)))
+        return model_mean + nonzero_mask * (0.5 * model_log_variance).exp() * noise
+    
+    def p_sample_loop(self, x_in, nsample=7, continuous=False):
         device = self.betas.device
-        noise=None
-        x = x_in
-        x_m = x_in[:, :1]
-        x_f = x_in[:, 1:]
-        # print(np.min(x_m.cpu().numpy()))
+        eta =np.linspace(0, 1,nsample)
+        #x = x_in
+        # x_m = x_in[:, :1]
+        # x_f = x_in[:, 1:]
+        x_m = x_in['M']
+        x_f = x_in['F']
         b, c, h, w = x_m.shape
+        cont_deform = x_m
+        cont_field = torch.zeros((b, 3, h, w), device = device)
+
         with torch.no_grad():
             t = torch.full((b,), 0, device=device, dtype=torch.long)
-            _,flow = self.denoise_fn(torch.cat([x, x_f], dim=1),x_m, t)
-            b, c, h, w = x_f.shape
+            recon ,flow = self.denoise_fn(torch.cat([x_f, x_m, x_f], dim=1),x_m, t)
             deform=self.stn(x_m,flow)
-            return deform, flow, deform, flow
+        for ieta in range(nsample):
+            flow_eta = flow * eta[ieta]
+            deform_eta=self.stn(x_m,flow_eta)
+            cont_deform = torch.cat([cont_deform, deform_eta], dim=0)
+            cont_field = torch.cat([cont_field, flow_eta], dim=0)
+
+        if continuous:
+            return deform, flow, cont_deform[1:], cont_field[1:]
+        else:
+            return deform, flow, cont_deform[-1], cont_field[-1]
         
-        
-    
-    
-    
-    
-    
-    
-    
+    def generation(self, x_in, continuous=False):
+        device = self.betas.device
+        #print("here")
+        #print(x_in)
+        x = x_in
+        x_m = x_in[:, :1]
+        shape = x_m.shape
+        #torchvision.utils.save_image(x_m, 'x_m.png', normalize = True)
+        #exit()
+        b = shape[0]
+
+        fw_timesteps = 200
+        bw_timesteps = 200
+        t = torch.full((b,), fw_timesteps, device=device, dtype=torch.long)
+        with torch.no_grad():
+            # ################ Forward ##############################
+            d2n_img = self.q_sample(x_m, t)
+            #print('--------d2n--------', d2n_img)
+            #torchvision.utils.save_image(d2n_img, 'd2n_img.png', normalize = True)
+
+            # ################ Reverse ##############################
+            img = d2n_img
+            ret_img = d2n_img
+
+            for ispr in range(1):
+                for i in (reversed(range(0, bw_timesteps))):
+                    t = torch.full((b,), i, device=device, dtype=torch.long)
+                    img = self.p_sample(img, x_m, t, condition_x=x)
+                    #torchvision.utils.save_image(img, 'img.png', normalize = True)
+
+                    if i % 11 == 0: #
+                        ret_img = torch.cat([ret_img, img], dim=0)
+
+            #torchvision.utils.save_image(ret_img, 'ret_img.png', normalize = True)
+            #print('rec image shape', ret_img.shape)
+        if continuous:
+            return ret_img
+        else:
+            return ret_img[-1:]
     
     
     @torch.no_grad()
-    def registration(self, x_in):
-        return self.p_sample_loop(x_in)
+    def registration(self, x_in, nsample=7, continuous=False):
+        return self.p_sample_loop(x_in, nsample, continuous)
 
     def q_sample(self, x_start, t, noise=None):
         noise = default(noise, lambda: torch.randn_like(x_start))
@@ -239,12 +289,21 @@ class GaussianDiffusion(nn.Module):
         noise = default(noise, lambda: torch.randn_like(x_start))
         x_noisy_fw = self.q_sample(x_start=x_start, t=t, noise=noise)
         x_recon_fw,flow_fw = self.denoise_fn(torch.cat([x_in['M'], x_in['F'], x_noisy_fw], dim=1),x_in['M'], t)
+        #print('------output denoise_fn in diffusion.py---------', x_recon_fw.shape)
+        #exit()
         l_pix_fw = self.loss_func(noise, x_recon_fw)
+        #print(x_in['M'].shape)
+        #torchvision.utils.save_image(x_in['M'], 'x_IN_out.png', normalize = True)
+        #print(flow_fw.shape)
+        #torchvision.utils.save_image(flow_fw, 'flow_fw.png', normalize = True)
+        #exit()
         output_fw = self.stn(x_in['M'],flow_fw)
+        #torchvision.utils.save_image(output_fw, 'output_fw.png', normalize = True)
+        #exit()
         l_sim_fw = self.loss_ncc(output_fw, x_in['F'],x_recon_fw) * 20
         l_smt_fw = self.loss_reg(flow_fw) * 20
         loss =  l_sim_fw + l_smt_fw+l_pix_fw
-        l_pix_fw=l_sim_fw
+        # l_pix_fw=l_sim_fw
         x_recon_fw=x_start #why?
         return [x_recon_fw, output_fw, flow_fw], [l_pix_fw, l_sim_fw, l_smt_fw, loss]
 

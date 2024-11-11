@@ -5,6 +5,8 @@ import torch.nn.functional as F
 from inspect import isfunction
 from einops import rearrange
 
+import torchvision
+
 def exists(x):
     return x is not None
 
@@ -297,15 +299,37 @@ class UNet(nn.Module):
                 feat=feats.pop()
                 x_1 = layerd(torch.cat((x_1, feat), dim=1), t)
                 x_2 = layerr(torch.cat((x_2, feat,x_1), dim=1), t)
+                #x_2_shape = x_2.shape #[1,32,16,16]
+                #feat_shape = feat.shape #[1,32,16,16]
+                #x_1_shape = x_1.shape #[1,32,16,16]
                 defm_=layera(x_2,x_1,x_1,input_size)     ###############################################
                 defm.append(defm_)
             else:
                 x_1 = layerd(x_1)
+                x_1_shape = x_1.shape
                 x_2 = layerr(x_2)
+                x_2_shape = x_2.shape
+                x_2_shape = x_2.shape
+
         recon=self.final_conv(x_1)
+        #print('-----------------Recon shape------------------------', recon.shape)
         defm=torch.stack(defm,dim=1)
+        #print('-----------------Defm shape stack------------------------', defm.shape)
+        #print('-----------------x_2 shape------------------------', x_2.shape)
+        #print('-----------------recon shape------------------------', recon.shape)
+        A = torch.cat((x_2,recon), dim=1)
+        #print('-----------------A shape ------------------------', A.shape)
+        #exit()
+        B = self.final_conv_defm(A)
+        #print('-----------------B shape ------------------------', B.shape)
         defm=torch.cat([defm,self.final_conv_defm(torch.cat((x_2,recon), dim=1)).unsqueeze_(1)],dim=1)
+        #print('-----------------Defm shape- cat-----------------------', defm.shape)
         defm=torch.mean(defm,dim=1)
+        #print('-----------------Defm shape- mean-----------------------', defm.shape)
+        #torchvision.utils.save_image(defm, 'defm.png', normalize = True)
+
+        #torchvision.utils.save_image(recon, 'recon.png', normalize = True)
+        #exit()
         return recon,defm
     
 class Dense2DSpatialTransformer(nn.Module):
@@ -327,6 +351,8 @@ class Dense2DSpatialTransformer(nn.Module):
             H_mesh = H_mesh.unsqueeze_(0).expand(batchSize, hgt, wdt)
             W_mesh = W_mesh.unsqueeze_(0).expand(batchSize, hgt, wdt)
 
+            print(H_mesh.shape)
+
             H_upmesh = dHeight + H_mesh
             W_upmesh = dWidth + W_mesh
             
@@ -345,7 +371,7 @@ class Dense2DSpatialTransformer(nn.Module):
         height = input.shape[2]
         width  = input.shape[3]
 
-        img = torch.zeros(nbatch, nch, height+2, width+2).cuda()
+        img = torch.zeros(nbatch, nch, height+2, width+2).cuda()  #[1,3,130,130]
         img[:, :, 1:-1, 1:-1] = input
         img[:, :, 0, 1:-1] = input[:, :, 0, :]
         img[:, :, -1, 1:-1] = input[:, :, -1, :]
@@ -356,12 +382,23 @@ class Dense2DSpatialTransformer(nn.Module):
         img[:, :, -1, 0] = input[:, :, -1, 0]
         img[:, :, -1, -1] = input[:, :,-1, -1]
 
-        imgHgt = img.shape[2]
-        imgWdt = img.shape[3]
+        #torchvision.utils.save_image(img, 'figures_tests/img_new_3C_.png', normalize = True)
 
-        # H_upmesh, W_upmesh = [H, W] -> [BHW,]
+        imgHgt = img.shape[2] #130
+        imgWdt = img.shape[3] #130
+        #print('imgHgt', imgHgt)
+        #print('imgWdt', imgWdt)
+
+        #print('Shape Image', img.shape)
+        #print('H_upmesh', H_upmesh.shape)
+        #print('W_upmesh', W_upmesh.shape)
+
+        # H_upmesh, W_upmesh = [H, W] -> [BHW,] 
         H_upmesh = H_upmesh.view(-1).float()+1.0  # (BHW,)
         W_upmesh = W_upmesh.view(-1).float()+1.0  # (BHW,)
+
+        #print('H_upmesh', H_upmesh.shape)
+        #print('W_upmesh', W_upmesh.shape)
 
         # H_upmesh, W_upmesh -> Clamping
         hf = torch.floor(H_upmesh).int()
@@ -378,6 +415,9 @@ class Dense2DSpatialTransformer(nn.Module):
         rep = torch.ones([height*width, ]).unsqueeze_(1).transpose(1, 0).cuda()
         bHW = torch.matmul((torch.arange(0, nbatch).float()*imgHgt*imgWdt).unsqueeze_(1).cuda(), rep).view(-1).int()
 
+        #print('bHW', bHW)
+        #print('bHW shape', bHW.shape)
+
         # Box updated indexes
         W = imgWdt
         # x: W, y: H, z: D
@@ -386,22 +426,49 @@ class Dense2DSpatialTransformer(nn.Module):
         idx_01 = bHW + hc*W + wf
         idx_11 = bHW + hc*W + wc
 
+        #print('idx_00', idx_00)
+        #print('idx_00 shape', idx_00.shape)
+
         # Box values
-        img_flat = img.view(-1, nch).float()  # (BDHW,C) //// C=1
+        img_flat = img.permute(0,2,3,1)
+        img_flat = img_flat.view(-1, nch).float()  # (BHW,C) //// C=1
+        
+        #torch.set_printoptions(profile="full")
+        #print('img_flat shape', img_flat.shape)
 
         val_00 = torch.index_select(img_flat, 0, idx_00.long())
         val_10 = torch.index_select(img_flat, 0, idx_10.long())
         val_01 = torch.index_select(img_flat, 0, idx_01.long())
         val_11 = torch.index_select(img_flat, 0, idx_11.long())
+        #print('val 00', val_00.shape)
+        #print('val', val_00)
 
+        #print('----')
+        #print(hc.shape)
+        #print(H_upmesh.shape)
         dHeight = hc.float() - H_upmesh
         dWidth  = wc.float() - W_upmesh
 
         wgt_00 = (dHeight*dWidth).unsqueeze_(1)
+        #print('wgt_00', wgt_00)
+        #print('wgt_00 shape', wgt_00.shape)
         wgt_10 = (dHeight * (1-dWidth)).unsqueeze_(1)
         wgt_01 = ((1-dHeight) * dWidth).unsqueeze_(1)
         wgt_11 = ((1-dWidth) * (1-dHeight)).unsqueeze_(1)
 
         output = val_00*wgt_00 + val_10*wgt_10 + val_01*wgt_01 + val_11*wgt_11
-        output = output.view(nbatch, height, width, nch).permute(0, 3, 1, 2)  #B, C, H, W
+        #output = val_00
+        #print('out', (val_00*wgt_00).shape)
+
+        #O = output.view(nbatch, height, width, nch)
+        #output = output.view(nbatch, nch, height, width)
+        #print('Output',O.shape)
+        #output = output.view(nbatch, height, width, nch).permute(0, 3, 1, 2)  #B, C, H, W
+        #print('output',output.shape)
+
+        output = output.view(nbatch, height, width, nch)
+        output = output.permute(0,3,1,2)
+
+        #torchvision.utils.save_image(output, 'figures_tests/output_.png', normalize = True)
+        #exit() #-------------------------ADAPTAR ESTA CLASSE PARA LIDAR COM CANAIS____________________________________
         return output

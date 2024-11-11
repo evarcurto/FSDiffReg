@@ -1,6 +1,6 @@
 import numpy as np
 import torch
-import pystrum.pynd.ndutils as nd
+#import pystrum.pynd.ndutils as nd
 
 def transform_grid(dDepth, dHeight, dWidth):
     batchSize = dDepth.shape[0]
@@ -21,6 +21,20 @@ def transform_grid(dDepth, dHeight, dWidth):
     H_upmesh = dHeight.float() + H_mesh
     W_upmesh = dWidth.float() + W_mesh
     return torch.stack([D_upmesh, H_upmesh, W_upmesh], dim=1)
+
+
+def transform_grid_2D(dHeight, dWidth):
+    #print(dHeight.shape)
+    #print(dHeight)
+    hgt = dHeight.shape[0]
+    wdt = dHeight.shape[1]
+
+    h_t = torch.linspace(0.0, hgt - 1.0, hgt).unsqueeze_(1).expand(hgt, wdt)
+    w_t = torch.linspace(0.0, wdt - 1.0, wdt).unsqueeze_(0).expand(hgt, wdt)
+
+    H_upmesh = dHeight.float() + h_t
+    W_upmesh = dWidth.float() + w_t
+    return torch.stack([H_upmesh, W_upmesh], dim=0)
 
 
 

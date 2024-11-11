@@ -13,7 +13,7 @@
         "centered": true,
         "train": {
             "name": "Torus",
-            "dataroot": "/media/eva-isr/SSD/torus_color/", 
+            "dataroot": "/media/eva-isr/SSD/torus_color/",
             "batch_size": 1,
             "num_workers": 16,
             "use_shuffle": true
@@ -49,7 +49,7 @@
         },
         "diffusion": {
             "image_size": 128,
-            "channels": 3,
+            "channels": 9,
             "conditional": true
         },
         "field": {
@@ -61,10 +61,10 @@
         "gamma": 1
     },
     "train": {
-        "n_epoch": 200,
+        "n_epoch": 100,
         "val_freq": 10,
-        "save_checkpoint_epoch": 200,
-        "print_freq": 1,
+        "save_checkpoint_epoch": 100,
+        "print_freq": 100,
         "optimizer": {
             "type": "adam",
             "lr": 5e-5

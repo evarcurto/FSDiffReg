@@ -1,0 +1,61 @@
+{
+    "name": "FSDiffReg_2D",
+    "phase": "test",
+    "gpu_ids": [
+        0
+    ],
+    "path": {
+        "results": "results",
+        "checkpoint": "checkpoint",
+        //"resume_state": "/home/eva-isr/FSDiffReg/experiments/FSDiffReg_2D_240712_170051/checkpoint/I117600_E200"
+         // "resume_state": "/home/eva-isr/FSDiffReg/experiments/FSDiffReg_2D_240813_184855/checkpoint/I19800_E200",
+         "resume_state": "/home/eva-isr/Documents/fsdiffreg_weights/I19800_E200"
+    },
+    "datasets": {
+        "centered": true,
+        "test": {
+            "name": "Torus",
+            "dataroot": "/media/eva-isr/SSD/torus_color_cam1/",
+            "data_len": 3
+        }
+    },
+    "model": {
+        "netDim": 2,
+        "which_model_G": "ddpm",
+        "finetune_norm": true, // false,
+        "unet": {
+            "in_channel": 9,
+            "out_channel": 1,
+            "inner_channel": 8,
+            "channel_multiplier": [
+                1,
+                2,
+                4,
+                4
+            ],
+            "attn_res": [
+                10
+            ],
+            "res_blocks": 1,
+            "dropout": 0
+        },
+        "beta_schedule": {
+            "train": {
+                "schedule": "linear",
+                "n_timestep": 2000,
+                "linear_start": 1e-6,
+                "linear_end": 1e-2
+            }
+        },
+        "diffusion": {
+            "image_size": 128,
+            "channels":3,
+            "conditional": true
+        },
+        "field": {
+            "in_channel": 2,
+            "encoder_nc": [64,128,256,512,1024],
+            "decoder_nc": [1024,512,256,128,64,2]
+        }
+    }
+}

@@ -28,6 +28,9 @@ class crossCorrelation2D(nn.Module):
         self.kernel = kernel
         self.gamma=gamma
         self.filt = (torch.ones([1, in_ch, self.kernel[0], self.kernel[1]])).to('cuda:0')
+        #self.filt = torch.nn.Conv2d(3, 3, kernel_size=(9, 9))
+        #self.filt = torch.nn.Conv2d(in_channels=3, out_channels=3, kernel_size=(9, 9), bias=False).to('cuda:0')
+
 
 
     def forward(self, input, target,flow):

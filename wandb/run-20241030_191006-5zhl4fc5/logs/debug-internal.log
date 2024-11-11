@@ -1,0 +1,18 @@
+{"time":"2024-10-30T19:10:06.045974824Z","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-10-30T19:10:06.045984334Z","level":"INFO","msg":"created symlink","path":"/home/eva-isr/FSDiffReg/wandb/run-20241030_191006-5zhl4fc5/logs/debug-core.log"}
+{"time":"2024-10-30T19:10:06.14940823Z","level":"INFO","msg":"created new stream","id":"5zhl4fc5"}
+{"time":"2024-10-30T19:10:06.149473149Z","level":"INFO","msg":"stream: started","id":"5zhl4fc5"}
+{"time":"2024-10-30T19:10:06.149557375Z","level":"INFO","msg":"sender: started","stream_id":"5zhl4fc5"}
+{"time":"2024-10-30T19:10:06.149553319Z","level":"INFO","msg":"handler: started","stream_id":{"value":"5zhl4fc5"}}
+{"time":"2024-10-30T19:10:06.149575088Z","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"5zhl4fc5"}}
+{"time":"2024-10-30T19:10:06.384277796Z","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-10-30T19:34:07.16186653Z","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/evarcurto-university-of-coimbra/my_project_name/5zhl4fc5/file_stream"}
+{"time":"2024-10-30T19:35:10.125589789Z","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/evarcurto-university-of-coimbra/my_project_name/5zhl4fc5/file_stream"}
+{"time":"2024-10-30T19:58:01.259021087Z","level":"INFO","msg":"stream: closing","id":"5zhl4fc5"}
+{"time":"2024-10-30T19:58:01.259054152Z","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-10-30T19:58:01.259479238Z","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-10-30T19:58:03.772042587Z","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-10-30T19:58:03.986817515Z","level":"INFO","msg":"handler: closed","stream_id":{"value":"5zhl4fc5"}}
+{"time":"2024-10-30T19:58:03.986859397Z","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"5zhl4fc5"}}
+{"time":"2024-10-30T19:58:03.986878563Z","level":"INFO","msg":"sender: closed","stream_id":"5zhl4fc5"}
+{"time":"2024-10-30T19:58:03.986890261Z","level":"INFO","msg":"stream: closed","id":"5zhl4fc5"}

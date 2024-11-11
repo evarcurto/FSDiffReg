@@ -1,0 +1,16 @@
+{"time":"2024-10-31T14:55:27.356900684Z","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-10-31T14:55:27.356910475Z","level":"INFO","msg":"created symlink","path":"/home/eva-isr/FSDiffReg/wandb/run-20241031_145527-ht41zgj6/logs/debug-core.log"}
+{"time":"2024-10-31T14:55:27.46102867Z","level":"INFO","msg":"created new stream","id":"ht41zgj6"}
+{"time":"2024-10-31T14:55:27.461049424Z","level":"INFO","msg":"stream: started","id":"ht41zgj6"}
+{"time":"2024-10-31T14:55:27.461086309Z","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"ht41zgj6"}}
+{"time":"2024-10-31T14:55:27.46112253Z","level":"INFO","msg":"handler: started","stream_id":{"value":"ht41zgj6"}}
+{"time":"2024-10-31T14:55:27.461173985Z","level":"INFO","msg":"sender: started","stream_id":"ht41zgj6"}
+{"time":"2024-10-31T14:55:27.692127379Z","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-10-31T15:44:50.1431006Z","level":"INFO","msg":"stream: closing","id":"ht41zgj6"}
+{"time":"2024-10-31T15:44:50.143118803Z","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-10-31T15:44:50.143452823Z","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-10-31T15:44:51.888929763Z","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-10-31T15:44:52.152764488Z","level":"INFO","msg":"handler: closed","stream_id":{"value":"ht41zgj6"}}
+{"time":"2024-10-31T15:44:52.152790294Z","level":"INFO","msg":"sender: closed","stream_id":"ht41zgj6"}
+{"time":"2024-10-31T15:44:52.152788984Z","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"ht41zgj6"}}
+{"time":"2024-10-31T15:44:52.152930672Z","level":"INFO","msg":"stream: closed","id":"ht41zgj6"}

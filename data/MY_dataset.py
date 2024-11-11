@@ -4,6 +4,7 @@ import os
 import numpy as np
 from skimage import io
 from natsort import natsorted
+import torch
 
 class MYDataset(Dataset):
 
@@ -35,12 +36,23 @@ class MYDataset(Dataset):
         dataX, dataY = fileInfo[0], fileInfo[1]
         dataXPath = os.path.join(self.dataroot, self.split, dataX)
         dataYPath = os.path.join(self.dataroot, self.split, dataY)
+
+        #Reading images as one-channel gray images
         data = io.imread(dataXPath, as_gray=True).astype(float)[:, :, np.newaxis]
         label = io.imread(dataYPath, as_gray=True).astype(float)[:, :, np.newaxis]
+
+        #Reading images as three-channel gray images (gray image x3)
+        #data = np.repeat(io.imread(dataXPath, as_gray=True).astype(float)[:, :, np.newaxis],3, axis=2)
+        #label = np.repeat(io.imread(dataYPath, as_gray=True).astype(float)[:, :, np.newaxis],3, axis=2)
+
+        #Reading images as three-channel RGB images
+        #data = io.imread(dataXPath, as_gray=False).astype(float)
+        #label = io.imread(dataYPath, as_gray=False).astype(float)
 
         dataX_RGB = io.imread(dataXPath).astype(float)
         dataY_RGB = io.imread(dataYPath).astype(float)
 
         [data, label] = Util.transform_augment([data, label], split=self.split, min_max=(-1, 1))
+
 
         return {'M': data, 'F': label, 'MC': dataX_RGB, 'FC': dataY_RGB, 'nS': 7, 'P': fileInfo, 'Index': index}

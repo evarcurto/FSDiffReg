@@ -48,6 +48,8 @@ def transform2tensor(img, min_max=(0, 1)):
     img = torch.from_numpy(np.ascontiguousarray(
         np.transpose(img, (2, 0, 1)))).float()
     # to range min_max
+    # Normalize the image to [0, 1]
+    # img = img / 255.0  # uncomment for RGB
     img = img*(min_max[1] - min_max[0]) + min_max[0]
     return img
 

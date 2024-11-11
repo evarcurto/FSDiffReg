@@ -12,6 +12,9 @@ import time
 #from torch.utils import tensorboard
 from util.visualizer import Visualizer
 
+from torchsummary import summary
+
+
 
 
 if __name__ == "__main__":
@@ -46,6 +49,8 @@ if __name__ == "__main__":
     # model
     diffusion = Model.create_model(opt)
     print("Model Initialized")
+    #print(diffusion)
+    #summary(diffusion,(3,128,128))
 
     # Train
 
@@ -81,6 +86,7 @@ if __name__ == "__main__":
                 #writer.add_scalar("train/l_sim", logs['l_sim'], (istep+1)*current_epoch)
                 #writer.add_scalar("train/l_smt", logs['l_smt'], (istep+1)*current_epoch)
                 #writer.add_scalar("train/l_tot", logs['l_tot'], (istep+1)*current_epoch)
+
               
         if current_epoch % opt['train']['save_checkpoint_epoch'] == 0:
             diffusion.save_network(current_epoch, current_step)

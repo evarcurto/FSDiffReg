@@ -1,11 +1,19 @@
 
+import logging
 from collections import OrderedDict
 import torch
 import torch.nn as nn
 import os
+
+from sympy import false
+
 import model.networks as networks
 from .base_model import BaseModel
 from . import metrics as Metrics
+
+import torchvision
+from torchsummary import summary
+
 
 
 class DDPM(BaseModel):
@@ -39,7 +47,16 @@ class DDPM(BaseModel):
             self.optG = torch.optim.Adam(optim_params, lr=opt['train']["optimizer"]["lr"], betas=(0.5, 0.999))
             self.log_dict = OrderedDict()
         self.load_network()
-        # self.print_network(self.netG)
+        #self.print_network(self.netG)
+        
+    def __str__(self):
+        """Return a string representation of the model parameters."""
+        params = {k: v.shape for k, v in self.netG.named_parameters()}
+        return f"DDPM Model Parameters:\n" + "\n".join([f"{k}: {v}" for k, v in params.items()])
+
+    def __repr__(self):
+        """Return a more detailed string representation of the model."""
+        return self.__str__()
 
     def feed_data(self, data):
         self.data = self.set_device(data)
@@ -61,15 +78,28 @@ class DDPM(BaseModel):
         self.log_dict['l_smt'] = l_smt.item()
         self.log_dict['l_tot'] = l_tot.item()
 
-
-
-    def test_registration(self):
+    def test_generation(self, continuous=False):
         self.netG.eval()
         input = torch.cat([self.data['M'], self.data['F']], dim=1)
+        #print(input.shape)
+        #torchvision.utils.save_image(input, 'teste_MF_dim1.png', normalize = True) 
+        #exit()
         if isinstance(self.netG, nn.DataParallel):
-            self.out_M, self.flow, self_contD, self.contF = self.netG.module.registration(input)
+            self.MF = self.netG.module.generation(input, continuous)
         else:
-            self.out_M, self.flow, self.contD, self.contF = self.netG.registration(input)
+            self.MF= self.netG.generation(input, continuous)
+            #torchvision.utils.save_image(self.MF, 'teste_self_M.png', normalize = True)
+        self.netG.train()
+
+
+    def test_registration(self, continuous=False):
+        self.netG.eval()
+        input = torch.cat([self.data['M'], self.data['F']], dim=1)
+        nsample = self.data['nS'][0].detach().cpu().numpy()
+        if isinstance(self.netG, nn.DataParallel):
+            self.out_M, self.flow, self.contD, self.contF = self.netG.module.registration(input, nsample=nsample, continuous=continuous)
+        else:
+            self.out_M, self.flow, self.contD, self.contF = self.netG.registration(self.data, nsample=nsample, continuous=continuous)
         self.netG.train()
 
     def set_loss(self):
@@ -98,8 +128,17 @@ class DDPM(BaseModel):
             min_max = (0, 1)
         out_dict['M'] = Metrics.tensor2im_batch(self.data['M'].detach().float().cpu(), min_max=min_max)
         out_dict['F'] = Metrics.tensor2im_batch(self.data['F'].detach().float().cpu(), min_max=min_max)
+        #print(self.out_M.shape)
+        #torchvision.utils.save_image(self.out_M, 'out_M.png', normalize = True)
+        #exit()
         out_dict['out_M'] = Metrics.tensor2im_batch(self.out_M.detach().float().cpu(), min_max=(0, 1))
         out_dict['flow'] = Metrics.tensor2im_batch(self.flow.detach().float().cpu(), min_max=min_max)
+        return out_dict
+    
+    def get_current_generation(self):
+        out_dict = OrderedDict()
+
+        out_dict['MF'] = self.MF.detach().float().cpu()
         return out_dict
 
     def get_current_registration(self):
@@ -109,10 +148,20 @@ class DDPM(BaseModel):
         out_dict['flow'] = self.flow.detach().float().cpu()
         out_dict['contD'] = self.contD.detach().float().cpu()
         out_dict['contF'] = self.contF.detach().float().cpu()
-        out_dict['flow_visual']=Metrics.tensor2im(self.flow.detach().float().cpu(), min_max=(-1,1))
+        out_dict['flow_visual']=Metrics.tensor2im_batch(self.flow.detach().float().cpu(), min_max=(-1,1))
         return out_dict
 
-    
+    def print_network(self, net):
+        s, n = self.get_network_description(net)
+        if isinstance(net, nn.DataParallel):
+            net_struc_str = '{} - {}'.format(net.__class__.__name__,
+                                             net.module.__class__.__name__)
+        else:
+            net_struc_str = '{}'.format(net.__class__.__name__)
+
+        #print('Network structure: {}, with parameters: {:,d}'.format(net_struc_str, n))
+        print(net)
+        
 
     def save_network(self, epoch, iter_step):
         genG_path = os.path.join(
@@ -140,7 +189,8 @@ class DDPM(BaseModel):
 
         if load_path is not None:
             print(load_path)
-            genG_path = load_path
+            #genG_path = load_path
+            genG_path = '{}_gen_G.pth'.format(load_path)
 
             opt_path = '{}_opt.pth'.format(load_path)
             # gen

@@ -1,0 +1,617 @@
+Dataset Initialized
+Model Initialized
+/home/eva-isr/miniconda3/envs/DiffMorph/lib/python3.11/site-packages/torch/nn/functional.py:4102: UserWarning: nn.functional.upsample_nearest is deprecated. Use nn.functional.interpolate instead.
+  warnings.warn("nn.functional.upsample_nearest is deprecated. Use nn.functional.interpolate instead.")
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 1/588 | time: 1.666) l_pix: 1.162667 l_sim: -1.567717 l_smt: 3.005614 l_tot: 2.600564
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 2/588 | time: 0.075) l_pix: 1.130233 l_sim: -1.594113 l_smt: 3.145467 l_tot: 2.681587
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 3/588 | time: 0.052) l_pix: 1.179941 l_sim: -1.744040 l_smt: 2.806726 l_tot: 2.242627
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 4/588 | time: 0.050) l_pix: 1.127936 l_sim: -1.494105 l_smt: 2.768428 l_tot: 2.402259
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 5/588 | time: 0.053) l_pix: 1.135438 l_sim: -1.513478 l_smt: 3.100203 l_tot: 2.722163
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 6/588 | time: 0.055) l_pix: 1.224789 l_sim: -2.269659 l_smt: 2.686431 l_tot: 1.641561
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 7/588 | time: 0.052) l_pix: 1.134889 l_sim: -1.612007 l_smt: 2.595160 l_tot: 2.118042
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 8/588 | time: 0.050) l_pix: 1.123814 l_sim: -2.327002 l_smt: 2.369370 l_tot: 1.166182
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 9/588 | time: 0.049) l_pix: 1.174632 l_sim: -1.967380 l_smt: 2.577255 l_tot: 1.784507
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 10/588 | time: 0.046) l_pix: 1.124740 l_sim: -1.617558 l_smt: 2.875663 l_tot: 2.382845
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 11/588 | time: 0.047) l_pix: 1.107280 l_sim: -2.368191 l_smt: 2.479132 l_tot: 1.218221
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 12/588 | time: 0.050) l_pix: 1.143112 l_sim: -1.656740 l_smt: 3.347756 l_tot: 2.834128
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 13/588 | time: 0.049) l_pix: 1.149852 l_sim: -1.926554 l_smt: 2.334486 l_tot: 1.557785
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 14/588 | time: 0.052) l_pix: 1.180316 l_sim: -2.606462 l_smt: 1.598474 l_tot: 0.172328
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 15/588 | time: 0.048) l_pix: 1.164973 l_sim: -1.811023 l_smt: 2.108170 l_tot: 1.462120
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 16/588 | time: 0.050) l_pix: 1.142839 l_sim: -1.773835 l_smt: 1.455460 l_tot: 0.824464
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 17/588 | time: 0.050) l_pix: 1.143293 l_sim: -2.029761 l_smt: 2.051414 l_tot: 1.164946
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 18/588 | time: 0.049) l_pix: 1.167018 l_sim: -1.629963 l_smt: 1.944218 l_tot: 1.481273
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 19/588 | time: 0.047) l_pix: 1.129618 l_sim: -1.693716 l_smt: 2.119677 l_tot: 1.555579
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 20/588 | time: 0.045) l_pix: 1.158990 l_sim: -2.436061 l_smt: 1.204391 l_tot: -0.072680
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 21/588 | time: 0.050) l_pix: 1.084312 l_sim: -1.896906 l_smt: 2.002087 l_tot: 1.189493
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 22/588 | time: 0.047) l_pix: 1.088581 l_sim: -2.518543 l_smt: 1.913956 l_tot: 0.483994
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 23/588 | time: 0.050) l_pix: 1.154954 l_sim: -1.934786 l_smt: 1.221483 l_tot: 0.441651
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 24/588 | time: 0.054) l_pix: 1.170161 l_sim: -1.914539 l_smt: 1.344019 l_tot: 0.599640
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 25/588 | time: 0.050) l_pix: 1.105469 l_sim: -2.006608 l_smt: 1.830035 l_tot: 0.928895
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 26/588 | time: 0.057) l_pix: 1.105015 l_sim: -1.936035 l_smt: 1.782839 l_tot: 0.951819
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 27/588 | time: 0.052) l_pix: 1.085449 l_sim: -1.764282 l_smt: 1.815004 l_tot: 1.136171
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 28/588 | time: 0.051) l_pix: 1.158120 l_sim: -2.011114 l_smt: 1.378298 l_tot: 0.525304
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 29/588 | time: 0.050) l_pix: 1.095002 l_sim: -2.291961 l_smt: 1.643677 l_tot: 0.446718
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 30/588 | time: 0.047) l_pix: 1.146256 l_sim: -2.062222 l_smt: 1.464005 l_tot: 0.548039
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 31/588 | time: 0.048) l_pix: 1.119814 l_sim: -2.306704 l_smt: 1.634304 l_tot: 0.447413
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 32/588 | time: 0.049) l_pix: 1.109475 l_sim: -1.782902 l_smt: 1.565257 l_tot: 0.891831
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 33/588 | time: 0.056) l_pix: 1.157926 l_sim: -1.776831 l_smt: 1.020854 l_tot: 0.401949
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 34/588 | time: 0.049) l_pix: 1.094715 l_sim: -2.343668 l_smt: 1.484282 l_tot: 0.235329
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 35/588 | time: 0.052) l_pix: 1.213549 l_sim: -1.914570 l_smt: 0.955539 l_tot: 0.254518
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 36/588 | time: 0.052) l_pix: 1.179852 l_sim: -2.029386 l_smt: 0.866654 l_tot: 0.017120
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 37/588 | time: 0.051) l_pix: 1.131549 l_sim: -1.968573 l_smt: 1.394862 l_tot: 0.557838
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 38/588 | time: 0.050) l_pix: 1.198313 l_sim: -2.572039 l_smt: 0.999017 l_tot: -0.374709
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 39/588 | time: 0.051) l_pix: 1.146462 l_sim: -2.322029 l_smt: 0.921793 l_tot: -0.253773
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 40/588 | time: 0.058) l_pix: 1.115042 l_sim: -2.039962 l_smt: 1.011108 l_tot: 0.086189
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 41/588 | time: 0.055) l_pix: 1.105466 l_sim: -1.836727 l_smt: 1.430213 l_tot: 0.698952
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 42/588 | time: 0.052) l_pix: 1.087512 l_sim: -2.358710 l_smt: 1.341136 l_tot: 0.069938
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 43/588 | time: 0.056) l_pix: 1.097023 l_sim: -2.168452 l_smt: 1.304544 l_tot: 0.233115
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 44/588 | time: 0.053) l_pix: 1.080724 l_sim: -1.972193 l_smt: 1.301518 l_tot: 0.410048
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 45/588 | time: 0.052) l_pix: 1.208149 l_sim: -2.199401 l_smt: 0.844097 l_tot: -0.147154
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 46/588 | time: 0.051) l_pix: 1.216226 l_sim: -2.072055 l_smt: 0.856924 l_tot: 0.001095
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 47/588 | time: 0.051) l_pix: 1.081571 l_sim: -2.333265 l_smt: 1.227736 l_tot: -0.023958
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 48/588 | time: 0.051) l_pix: 1.113278 l_sim: -2.377452 l_smt: 1.253932 l_tot: -0.010242
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 49/588 | time: 0.050) l_pix: 1.112329 l_sim: -1.804273 l_smt: 1.271199 l_tot: 0.579255
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 50/588 | time: 0.046) l_pix: 1.122482 l_sim: -2.349650 l_smt: 1.230685 l_tot: 0.003518
+(Train - epoch: 1 | iters: 50/588 | time: 0.046) l_pix: 1.122482 l_sim: -2.349650 l_smt: 1.230685 l_tot: 0.003518
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 51/588 | time: 0.053) l_pix: 1.153070 l_sim: -2.038963 l_smt: 0.935419 l_tot: 0.049525
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 52/588 | time: 0.048) l_pix: 1.236306 l_sim: -2.338935 l_smt: 0.850326 l_tot: -0.252304
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 53/588 | time: 0.050) l_pix: 1.106176 l_sim: -2.534251 l_smt: 1.153291 l_tot: -0.274785
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 54/588 | time: 0.050) l_pix: 1.089620 l_sim: -2.336789 l_smt: 1.153584 l_tot: -0.093584
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 55/588 | time: 0.051) l_pix: 1.204034 l_sim: -1.861245 l_smt: 0.584420 l_tot: -0.072791
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 56/588 | time: 0.050) l_pix: 1.093348 l_sim: -2.110400 l_smt: 1.071983 l_tot: 0.054932
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 57/588 | time: 0.046) l_pix: 1.179156 l_sim: -2.281228 l_smt: 0.683519 l_tot: -0.418553
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 58/588 | time: 0.045) l_pix: 1.129331 l_sim: -2.079677 l_smt: 1.070137 l_tot: 0.119791
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 59/588 | time: 0.046) l_pix: 1.132514 l_sim: -1.982709 l_smt: 1.006698 l_tot: 0.156503
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 60/588 | time: 0.045) l_pix: 1.118125 l_sim: -1.917902 l_smt: 1.061769 l_tot: 0.261991
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 61/588 | time: 0.046) l_pix: 1.106448 l_sim: -2.253467 l_smt: 1.014705 l_tot: -0.132313
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 62/588 | time: 0.045) l_pix: 1.172940 l_sim: -2.344701 l_smt: 0.960515 l_tot: -0.211245
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 63/588 | time: 0.046) l_pix: 1.108920 l_sim: -2.241472 l_smt: 0.985767 l_tot: -0.146785
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 64/588 | time: 0.047) l_pix: 1.233860 l_sim: -1.954530 l_smt: 0.580483 l_tot: -0.140188
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 65/588 | time: 0.058) l_pix: 1.248176 l_sim: -2.527891 l_smt: 0.382039 l_tot: -0.897676
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 66/588 | time: 0.046) l_pix: 1.093379 l_sim: -3.525938 l_smt: 0.981615 l_tot: -1.450944
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 67/588 | time: 0.045) l_pix: 1.129555 l_sim: -2.424866 l_smt: 0.801753 l_tot: -0.493558
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 68/588 | time: 0.046) l_pix: 1.207975 l_sim: -2.291930 l_smt: 0.738521 l_tot: -0.345434
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 69/588 | time: 0.045) l_pix: 1.218879 l_sim: -2.238651 l_smt: 0.575352 l_tot: -0.444420
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 70/588 | time: 0.045) l_pix: 1.113512 l_sim: -2.327131 l_smt: 0.952651 l_tot: -0.260968
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 71/588 | time: 0.045) l_pix: 1.159703 l_sim: -2.797018 l_smt: 0.696921 l_tot: -0.940394
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 72/588 | time: 0.046) l_pix: 1.204241 l_sim: -2.715013 l_smt: 0.712435 l_tot: -0.798337
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 73/588 | time: 0.045) l_pix: 1.155510 l_sim: -2.805237 l_smt: 0.846130 l_tot: -0.803597
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 74/588 | time: 0.046) l_pix: 1.105016 l_sim: -2.403291 l_smt: 0.954507 l_tot: -0.343768
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 75/588 | time: 0.047) l_pix: 1.112352 l_sim: -2.322091 l_smt: 0.937358 l_tot: -0.272382
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 76/588 | time: 0.049) l_pix: 1.092617 l_sim: -2.109589 l_smt: 0.861549 l_tot: -0.155422
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 77/588 | time: 0.055) l_pix: 1.113060 l_sim: -2.218539 l_smt: 0.892471 l_tot: -0.213007
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 78/588 | time: 0.052) l_pix: 1.089677 l_sim: -2.163739 l_smt: 0.835446 l_tot: -0.238617
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 79/588 | time: 0.052) l_pix: 1.150433 l_sim: -2.170479 l_smt: 0.844390 l_tot: -0.175655
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 80/588 | time: 0.054) l_pix: 1.114768 l_sim: -2.112988 l_smt: 0.810824 l_tot: -0.187396
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 81/588 | time: 0.055) l_pix: 1.216338 l_sim: -2.770476 l_smt: 0.638334 l_tot: -0.915803
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 82/588 | time: 0.060) l_pix: 1.231026 l_sim: -2.314261 l_smt: 0.399219 l_tot: -0.684017
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 83/588 | time: 0.056) l_pix: 1.140358 l_sim: -2.292344 l_smt: 0.779840 l_tot: -0.372145
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 84/588 | time: 0.054) l_pix: 1.107969 l_sim: -2.833194 l_smt: 0.876066 l_tot: -0.849159
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 85/588 | time: 0.050) l_pix: 1.191140 l_sim: -2.755315 l_smt: 0.634358 l_tot: -0.929817
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 86/588 | time: 0.051) l_pix: 1.097911 l_sim: -2.163234 l_smt: 0.816753 l_tot: -0.248569
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 87/588 | time: 0.053) l_pix: 1.132938 l_sim: -2.212586 l_smt: 0.770544 l_tot: -0.309104
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 88/588 | time: 0.065) l_pix: 1.253142 l_sim: -2.083466 l_smt: 0.452163 l_tot: -0.378162
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 89/588 | time: 0.058) l_pix: 1.137555 l_sim: -1.997172 l_smt: 0.792919 l_tot: -0.066698
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 90/588 | time: 0.054) l_pix: 1.144309 l_sim: -2.216008 l_smt: 0.750468 l_tot: -0.321231
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 91/588 | time: 0.053) l_pix: 1.225598 l_sim: -2.127244 l_smt: 0.520503 l_tot: -0.381142
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 92/588 | time: 0.057) l_pix: 1.172439 l_sim: -2.468758 l_smt: 0.671528 l_tot: -0.624790
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 93/588 | time: 0.053) l_pix: 1.111725 l_sim: -2.331509 l_smt: 0.776461 l_tot: -0.443323
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 94/588 | time: 0.047) l_pix: 1.104174 l_sim: -2.051119 l_smt: 0.765743 l_tot: -0.181201
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 95/588 | time: 0.056) l_pix: 1.121478 l_sim: -2.342882 l_smt: 0.735376 l_tot: -0.486028
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 96/588 | time: 0.052) l_pix: 1.226386 l_sim: -2.365354 l_smt: 0.489486 l_tot: -0.649482
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 97/588 | time: 0.060) l_pix: 1.097821 l_sim: -2.309863 l_smt: 0.732757 l_tot: -0.479285
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 98/588 | time: 0.058) l_pix: 1.182790 l_sim: -2.825203 l_smt: 0.507513 l_tot: -1.134900
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 99/588 | time: 0.053) l_pix: 1.218543 l_sim: -2.658202 l_smt: 0.440978 l_tot: -0.998681
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 100/588 | time: 0.054) l_pix: 1.135086 l_sim: -2.480831 l_smt: 0.611957 l_tot: -0.733788
+(Train - epoch: 1 | iters: 100/588 | time: 0.054) l_pix: 1.135086 l_sim: -2.480831 l_smt: 0.611957 l_tot: -0.733788
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 101/588 | time: 0.059) l_pix: 1.167623 l_sim: -2.239699 l_smt: 0.575452 l_tot: -0.496625
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 102/588 | time: 0.056) l_pix: 1.102198 l_sim: -2.270172 l_smt: 0.712681 l_tot: -0.455293
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 103/588 | time: 0.056) l_pix: 1.277079 l_sim: -2.145090 l_smt: 0.355846 l_tot: -0.512165
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 104/588 | time: 0.054) l_pix: 1.123731 l_sim: -2.071902 l_smt: 0.678822 l_tot: -0.269350
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 105/588 | time: 0.049) l_pix: 1.184514 l_sim: -2.894366 l_smt: 0.573958 l_tot: -1.135893
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 106/588 | time: 0.055) l_pix: 1.129288 l_sim: -2.157209 l_smt: 0.709403 l_tot: -0.318517
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 107/588 | time: 0.049) l_pix: 1.249875 l_sim: -2.124474 l_smt: 0.402739 l_tot: -0.471860
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 108/588 | time: 0.050) l_pix: 1.173322 l_sim: -2.919236 l_smt: 0.518619 l_tot: -1.227295
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 109/588 | time: 0.052) l_pix: 1.182847 l_sim: -2.205459 l_smt: 0.469011 l_tot: -0.553601
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 110/588 | time: 0.051) l_pix: 1.091724 l_sim: -2.227709 l_smt: 0.694316 l_tot: -0.441669
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 111/588 | time: 0.050) l_pix: 1.107524 l_sim: -1.972207 l_smt: 0.707164 l_tot: -0.157519
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 112/588 | time: 0.050) l_pix: 1.320207 l_sim: -2.726748 l_smt: 0.308818 l_tot: -1.097723
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 113/588 | time: 0.049) l_pix: 1.298541 l_sim: -2.784075 l_smt: 0.332595 l_tot: -1.152940
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 114/588 | time: 0.053) l_pix: 1.086313 l_sim: -2.332334 l_smt: 0.709724 l_tot: -0.536298
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 115/588 | time: 0.051) l_pix: 1.093612 l_sim: -3.369122 l_smt: 0.694909 l_tot: -1.580601
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 116/588 | time: 0.049) l_pix: 1.084817 l_sim: -2.424720 l_smt: 0.697370 l_tot: -0.642532
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 117/588 | time: 0.055) l_pix: 1.204277 l_sim: -2.823562 l_smt: 0.481191 l_tot: -1.138095
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 118/588 | time: 0.050) l_pix: 1.219765 l_sim: -2.667920 l_smt: 0.384758 l_tot: -1.063398
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 119/588 | time: 0.055) l_pix: 1.167777 l_sim: -2.262084 l_smt: 0.541071 l_tot: -0.553236
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 120/588 | time: 0.050) l_pix: 1.098591 l_sim: -1.996601 l_smt: 0.636365 l_tot: -0.261644
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 121/588 | time: 0.052) l_pix: 1.118761 l_sim: -1.978894 l_smt: 0.669021 l_tot: -0.191112
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 122/588 | time: 0.051) l_pix: 1.117002 l_sim: -2.216445 l_smt: 0.641419 l_tot: -0.458025
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 123/588 | time: 0.053) l_pix: 1.231061 l_sim: -2.577925 l_smt: 0.365872 l_tot: -0.980992
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 124/588 | time: 0.056) l_pix: 1.102182 l_sim: -2.735286 l_smt: 0.684517 l_tot: -0.948587
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 125/588 | time: 0.057) l_pix: 1.083358 l_sim: -2.077859 l_smt: 0.646417 l_tot: -0.348084
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 126/588 | time: 0.055) l_pix: 1.107285 l_sim: -2.406185 l_smt: 0.627627 l_tot: -0.671274
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 127/588 | time: 0.055) l_pix: 1.102128 l_sim: -2.064764 l_smt: 0.661388 l_tot: -0.301248
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 128/588 | time: 0.052) l_pix: 1.076656 l_sim: -2.108296 l_smt: 0.615909 l_tot: -0.415731
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 129/588 | time: 0.055) l_pix: 1.072930 l_sim: -2.691928 l_smt: 0.653537 l_tot: -0.965461
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 130/588 | time: 0.051) l_pix: 1.105131 l_sim: -2.752270 l_smt: 0.586998 l_tot: -1.060141
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 131/588 | time: 0.051) l_pix: 1.356887 l_sim: -3.107581 l_smt: 0.232310 l_tot: -1.518384
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 132/588 | time: 0.052) l_pix: 1.068315 l_sim: -2.163967 l_smt: 0.622844 l_tot: -0.472808
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 133/588 | time: 0.052) l_pix: 1.278920 l_sim: -2.761295 l_smt: 0.254189 l_tot: -1.228186
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 134/588 | time: 0.047) l_pix: 1.093681 l_sim: -2.222838 l_smt: 0.604776 l_tot: -0.524381
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 135/588 | time: 0.051) l_pix: 1.089219 l_sim: -3.783167 l_smt: 0.642785 l_tot: -2.051164
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 136/588 | time: 0.048) l_pix: 1.185599 l_sim: -2.382636 l_smt: 0.420706 l_tot: -0.776332
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 137/588 | time: 0.048) l_pix: 1.115026 l_sim: -3.097033 l_smt: 0.522773 l_tot: -1.459234
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 138/588 | time: 0.048) l_pix: 1.061434 l_sim: -2.127875 l_smt: 0.616104 l_tot: -0.450337
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 139/588 | time: 0.047) l_pix: 1.059224 l_sim: -2.443120 l_smt: 0.599767 l_tot: -0.784129
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 140/588 | time: 0.047) l_pix: 1.062782 l_sim: -2.470640 l_smt: 0.593402 l_tot: -0.814456
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 141/588 | time: 0.049) l_pix: 1.079535 l_sim: -2.844480 l_smt: 0.616109 l_tot: -1.148836
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 142/588 | time: 0.046) l_pix: 1.094294 l_sim: -3.244949 l_smt: 0.591953 l_tot: -1.558703
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 143/588 | time: 0.052) l_pix: 1.169817 l_sim: -2.221710 l_smt: 0.401425 l_tot: -0.650468
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 144/588 | time: 0.050) l_pix: 1.147193 l_sim: -2.748950 l_smt: 0.510675 l_tot: -1.091082
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 145/588 | time: 0.050) l_pix: 1.075609 l_sim: -2.942256 l_smt: 0.560195 l_tot: -1.306453
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 146/588 | time: 0.048) l_pix: 1.067092 l_sim: -2.244966 l_smt: 0.612402 l_tot: -0.565472
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 147/588 | time: 0.048) l_pix: 1.083117 l_sim: -2.150963 l_smt: 0.572143 l_tot: -0.495703
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 148/588 | time: 0.046) l_pix: 1.043284 l_sim: -2.845380 l_smt: 0.570680 l_tot: -1.231416
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 149/588 | time: 0.051) l_pix: 1.264597 l_sim: -3.209147 l_smt: 0.302113 l_tot: -1.642437
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 150/588 | time: 0.050) l_pix: 1.147035 l_sim: -2.207159 l_smt: 0.496836 l_tot: -0.563288
+(Train - epoch: 1 | iters: 150/588 | time: 0.050) l_pix: 1.147035 l_sim: -2.207159 l_smt: 0.496836 l_tot: -0.563288
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 151/588 | time: 0.052) l_pix: 1.066108 l_sim: -2.558990 l_smt: 0.558486 l_tot: -0.934396
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 152/588 | time: 0.051) l_pix: 1.075717 l_sim: -2.186862 l_smt: 0.575769 l_tot: -0.535376
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 153/588 | time: 0.055) l_pix: 1.055130 l_sim: -3.409913 l_smt: 0.580036 l_tot: -1.774747
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 154/588 | time: 0.054) l_pix: 1.247951 l_sim: -2.612898 l_smt: 0.321727 l_tot: -1.043220
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 155/588 | time: 0.052) l_pix: 1.205308 l_sim: -2.419416 l_smt: 0.305897 l_tot: -0.908211
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 156/588 | time: 0.049) l_pix: 1.074355 l_sim: -2.735816 l_smt: 0.555467 l_tot: -1.105994
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 157/588 | time: 0.047) l_pix: 1.163634 l_sim: -2.218804 l_smt: 0.335857 l_tot: -0.719313
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 158/588 | time: 0.053) l_pix: 1.172064 l_sim: -3.248950 l_smt: 0.404786 l_tot: -1.672100
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 159/588 | time: 0.047) l_pix: 1.055874 l_sim: -2.209386 l_smt: 0.544104 l_tot: -0.609409
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 160/588 | time: 0.059) l_pix: 1.055866 l_sim: -2.349205 l_smt: 0.562975 l_tot: -0.730364
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 161/588 | time: 0.050) l_pix: 1.166937 l_sim: -2.602245 l_smt: 0.350784 l_tot: -1.084524
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 162/588 | time: 0.049) l_pix: 1.113019 l_sim: -2.613372 l_smt: 0.440694 l_tot: -1.059659
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 163/588 | time: 0.045) l_pix: 1.267448 l_sim: -2.546295 l_smt: 0.257877 l_tot: -1.020969
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 164/588 | time: 0.045) l_pix: 1.097342 l_sim: -2.723789 l_smt: 0.455994 l_tot: -1.170454
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 165/588 | time: 0.046) l_pix: 1.058047 l_sim: -2.164344 l_smt: 0.493568 l_tot: -0.612729
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 166/588 | time: 0.049) l_pix: 1.340486 l_sim: -2.303480 l_smt: 0.234812 l_tot: -0.728183
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 167/588 | time: 0.051) l_pix: 1.040188 l_sim: -2.734077 l_smt: 0.532717 l_tot: -1.161173
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 168/588 | time: 0.048) l_pix: 1.056506 l_sim: -2.527373 l_smt: 0.502021 l_tot: -0.968847
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 169/588 | time: 0.048) l_pix: 1.324996 l_sim: -3.180398 l_smt: 0.199565 l_tot: -1.655837
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 170/588 | time: 0.050) l_pix: 1.049767 l_sim: -3.635288 l_smt: 0.523368 l_tot: -2.062153
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 171/588 | time: 0.049) l_pix: 1.092806 l_sim: -3.201724 l_smt: 0.518241 l_tot: -1.590678
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 172/588 | time: 0.048) l_pix: 1.040941 l_sim: -2.097964 l_smt: 0.519946 l_tot: -0.537077
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 173/588 | time: 0.051) l_pix: 1.100277 l_sim: -2.246920 l_smt: 0.454116 l_tot: -0.692526
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 174/588 | time: 0.048) l_pix: 1.070325 l_sim: -2.414751 l_smt: 0.508836 l_tot: -0.835590
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 175/588 | time: 0.046) l_pix: 1.081981 l_sim: -2.357601 l_smt: 0.519577 l_tot: -0.756043
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 176/588 | time: 0.045) l_pix: 1.250278 l_sim: -3.302385 l_smt: 0.224599 l_tot: -1.827508
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 177/588 | time: 0.045) l_pix: 1.054044 l_sim: -3.420186 l_smt: 0.522043 l_tot: -1.844099
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 178/588 | time: 0.048) l_pix: 1.127938 l_sim: -2.079655 l_smt: 0.433090 l_tot: -0.518628
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 179/588 | time: 0.046) l_pix: 1.174445 l_sim: -2.509036 l_smt: 0.287386 l_tot: -1.047205
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 180/588 | time: 0.046) l_pix: 1.097790 l_sim: -2.102728 l_smt: 0.466143 l_tot: -0.538795
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 181/588 | time: 0.049) l_pix: 1.056295 l_sim: -3.067210 l_smt: 0.514890 l_tot: -1.496025
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 182/588 | time: 0.050) l_pix: 1.057700 l_sim: -2.540200 l_smt: 0.464361 l_tot: -1.018139
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 183/588 | time: 0.046) l_pix: 1.188864 l_sim: -2.977763 l_smt: 0.311102 l_tot: -1.477797
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 184/588 | time: 0.045) l_pix: 1.047460 l_sim: -2.054759 l_smt: 0.533538 l_tot: -0.473760
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 185/588 | time: 0.048) l_pix: 1.046750 l_sim: -2.394114 l_smt: 0.495009 l_tot: -0.852355
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 186/588 | time: 0.045) l_pix: 1.072604 l_sim: -2.215412 l_smt: 0.485941 l_tot: -0.656868
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 187/588 | time: 0.045) l_pix: 1.049944 l_sim: -2.430797 l_smt: 0.503863 l_tot: -0.876989
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 188/588 | time: 0.045) l_pix: 1.052619 l_sim: -2.456958 l_smt: 0.485473 l_tot: -0.918866
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 189/588 | time: 0.049) l_pix: 1.159521 l_sim: -2.342348 l_smt: 0.319238 l_tot: -0.863588
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 190/588 | time: 0.046) l_pix: 1.034217 l_sim: -2.347892 l_smt: 0.448894 l_tot: -0.864781
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 191/588 | time: 0.045) l_pix: 1.065182 l_sim: -2.572636 l_smt: 0.447513 l_tot: -1.059940
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 192/588 | time: 0.045) l_pix: 1.013708 l_sim: -2.935404 l_smt: 0.482215 l_tot: -1.439480
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 193/588 | time: 0.045) l_pix: 1.043622 l_sim: -2.541160 l_smt: 0.459608 l_tot: -1.037929
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 194/588 | time: 0.048) l_pix: 1.277706 l_sim: -2.804692 l_smt: 0.221501 l_tot: -1.305485
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 195/588 | time: 0.045) l_pix: 1.031975 l_sim: -2.165661 l_smt: 0.498497 l_tot: -0.635188
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 196/588 | time: 0.047) l_pix: 1.027349 l_sim: -2.544492 l_smt: 0.469010 l_tot: -1.048133
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 197/588 | time: 0.049) l_pix: 1.068777 l_sim: -2.544837 l_smt: 0.427718 l_tot: -1.048342
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 198/588 | time: 0.048) l_pix: 1.021331 l_sim: -3.294619 l_smt: 0.460999 l_tot: -1.812289
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 199/588 | time: 0.045) l_pix: 1.029838 l_sim: -2.608432 l_smt: 0.443724 l_tot: -1.134870
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 200/588 | time: 0.046) l_pix: 1.097827 l_sim: -3.686781 l_smt: 0.449660 l_tot: -2.139294
+(Train - epoch: 1 | iters: 200/588 | time: 0.046) l_pix: 1.097827 l_sim: -3.686781 l_smt: 0.449660 l_tot: -2.139294
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 201/588 | time: 0.052) l_pix: 1.418671 l_sim: -2.752321 l_smt: 0.169841 l_tot: -1.163809
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 202/588 | time: 0.051) l_pix: 1.083401 l_sim: -2.534165 l_smt: 0.393429 l_tot: -1.057335
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 203/588 | time: 0.050) l_pix: 1.047603 l_sim: -3.081231 l_smt: 0.430446 l_tot: -1.603182
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 204/588 | time: 0.049) l_pix: 1.041601 l_sim: -2.198033 l_smt: 0.470609 l_tot: -0.685822
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 205/588 | time: 0.046) l_pix: 1.035046 l_sim: -3.392284 l_smt: 0.478779 l_tot: -1.878459
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 206/588 | time: 0.045) l_pix: 1.311908 l_sim: -2.663684 l_smt: 0.204762 l_tot: -1.147013
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 207/588 | time: 0.045) l_pix: 1.055527 l_sim: -3.315109 l_smt: 0.439605 l_tot: -1.819977
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 208/588 | time: 0.045) l_pix: 1.163677 l_sim: -2.587509 l_smt: 0.277091 l_tot: -1.146741
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 209/588 | time: 0.045) l_pix: 1.231115 l_sim: -3.130791 l_smt: 0.233998 l_tot: -1.665678
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 210/588 | time: 0.045) l_pix: 1.057561 l_sim: -2.968413 l_smt: 0.439064 l_tot: -1.471787
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 211/588 | time: 0.048) l_pix: 1.023594 l_sim: -2.873981 l_smt: 0.461367 l_tot: -1.389021
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 212/588 | time: 0.045) l_pix: 1.237907 l_sim: -2.733504 l_smt: 0.233404 l_tot: -1.262194
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 213/588 | time: 0.048) l_pix: 1.007419 l_sim: -2.571092 l_smt: 0.438047 l_tot: -1.125627
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 214/588 | time: 0.046) l_pix: 1.091804 l_sim: -3.007299 l_smt: 0.353207 l_tot: -1.562289
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 215/588 | time: 0.045) l_pix: 1.016075 l_sim: -2.425230 l_smt: 0.426071 l_tot: -0.983084
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 216/588 | time: 0.046) l_pix: 1.234851 l_sim: -3.093183 l_smt: 0.216006 l_tot: -1.642327
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 217/588 | time: 0.046) l_pix: 1.007233 l_sim: -2.407708 l_smt: 0.447595 l_tot: -0.952881
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 218/588 | time: 0.045) l_pix: 1.043461 l_sim: -3.367214 l_smt: 0.418420 l_tot: -1.905332
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 219/588 | time: 0.044) l_pix: 1.363815 l_sim: -3.763226 l_smt: 0.194555 l_tot: -2.204855
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 220/588 | time: 0.047) l_pix: 1.051067 l_sim: -2.944671 l_smt: 0.397109 l_tot: -1.496496
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 221/588 | time: 0.045) l_pix: 1.008200 l_sim: -2.779212 l_smt: 0.426971 l_tot: -1.344040
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 222/588 | time: 0.044) l_pix: 1.097330 l_sim: -2.639829 l_smt: 0.322982 l_tot: -1.219517
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 223/588 | time: 0.054) l_pix: 1.055325 l_sim: -2.309906 l_smt: 0.432199 l_tot: -0.822382
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 224/588 | time: 0.045) l_pix: 1.369338 l_sim: -3.670800 l_smt: 0.176314 l_tot: -2.125148
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 225/588 | time: 0.044) l_pix: 1.047813 l_sim: -3.045526 l_smt: 0.406825 l_tot: -1.590888
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 226/588 | time: 0.046) l_pix: 1.039761 l_sim: -3.105663 l_smt: 0.441253 l_tot: -1.624649
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 227/588 | time: 0.045) l_pix: 1.206960 l_sim: -4.153702 l_smt: 0.243130 l_tot: -2.703612
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 228/588 | time: 0.045) l_pix: 1.107691 l_sim: -2.422289 l_smt: 0.312882 l_tot: -1.001716
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 229/588 | time: 0.046) l_pix: 1.064845 l_sim: -2.344841 l_smt: 0.404372 l_tot: -0.875624
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 230/588 | time: 0.045) l_pix: 1.040751 l_sim: -2.306136 l_smt: 0.419363 l_tot: -0.846022
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 231/588 | time: 0.045) l_pix: 1.033088 l_sim: -2.057683 l_smt: 0.418213 l_tot: -0.606381
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 232/588 | time: 0.045) l_pix: 1.022541 l_sim: -2.147918 l_smt: 0.400306 l_tot: -0.725071
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 233/588 | time: 0.045) l_pix: 1.037768 l_sim: -2.174575 l_smt: 0.406918 l_tot: -0.729888
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 234/588 | time: 0.045) l_pix: 1.004681 l_sim: -2.260306 l_smt: 0.400313 l_tot: -0.855312
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 235/588 | time: 0.045) l_pix: 1.104680 l_sim: -2.836156 l_smt: 0.322458 l_tot: -1.409017
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 236/588 | time: 0.045) l_pix: 1.187148 l_sim: -3.282253 l_smt: 0.230518 l_tot: -1.864586
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 237/588 | time: 0.046) l_pix: 1.005245 l_sim: -2.705885 l_smt: 0.406268 l_tot: -1.294373
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 238/588 | time: 0.050) l_pix: 1.224243 l_sim: -2.703307 l_smt: 0.187793 l_tot: -1.291271
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 239/588 | time: 0.050) l_pix: 1.162919 l_sim: -2.578869 l_smt: 0.252527 l_tot: -1.163423
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 240/588 | time: 0.046) l_pix: 0.995163 l_sim: -2.770057 l_smt: 0.403326 l_tot: -1.371567
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 241/588 | time: 0.046) l_pix: 1.004892 l_sim: -2.310779 l_smt: 0.383175 l_tot: -0.922712
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 242/588 | time: 0.049) l_pix: 1.007788 l_sim: -3.529146 l_smt: 0.407140 l_tot: -2.114218
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 243/588 | time: 0.046) l_pix: 0.998381 l_sim: -2.056568 l_smt: 0.384827 l_tot: -0.673361
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 244/588 | time: 0.046) l_pix: 0.996788 l_sim: -2.252352 l_smt: 0.375049 l_tot: -0.880514
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 245/588 | time: 0.048) l_pix: 1.007205 l_sim: -2.689154 l_smt: 0.406085 l_tot: -1.275864
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 246/588 | time: 0.046) l_pix: 1.310584 l_sim: -3.355700 l_smt: 0.172313 l_tot: -1.872804
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 247/588 | time: 0.046) l_pix: 1.042578 l_sim: -2.136252 l_smt: 0.355202 l_tot: -0.738472
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 248/588 | time: 0.046) l_pix: 1.037354 l_sim: -2.730514 l_smt: 0.311505 l_tot: -1.381655
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 249/588 | time: 0.045) l_pix: 1.012267 l_sim: -2.514497 l_smt: 0.359670 l_tot: -1.142560
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 250/588 | time: 0.044) l_pix: 0.980625 l_sim: -2.856725 l_smt: 0.384229 l_tot: -1.491872
+(Train - epoch: 1 | iters: 250/588 | time: 0.044) l_pix: 0.980625 l_sim: -2.856725 l_smt: 0.384229 l_tot: -1.491872
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 251/588 | time: 0.047) l_pix: 0.964354 l_sim: -2.549282 l_smt: 0.368364 l_tot: -1.216563
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 252/588 | time: 0.050) l_pix: 0.999659 l_sim: -2.927141 l_smt: 0.389362 l_tot: -1.538120
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 253/588 | time: 0.050) l_pix: 1.082593 l_sim: -3.595836 l_smt: 0.300535 l_tot: -2.212708
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 254/588 | time: 0.053) l_pix: 1.307447 l_sim: -2.708275 l_smt: 0.162410 l_tot: -1.238418
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 255/588 | time: 0.046) l_pix: 1.005710 l_sim: -2.222374 l_smt: 0.374378 l_tot: -0.842286
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 256/588 | time: 0.051) l_pix: 1.386466 l_sim: -2.304199 l_smt: 0.149963 l_tot: -0.767770
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 257/588 | time: 0.046) l_pix: 0.998730 l_sim: -3.193372 l_smt: 0.362803 l_tot: -1.831839
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 258/588 | time: 0.046) l_pix: 1.036331 l_sim: -2.219998 l_smt: 0.287284 l_tot: -0.896384
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 259/588 | time: 0.049) l_pix: 0.975870 l_sim: -2.241908 l_smt: 0.351936 l_tot: -0.914102
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 260/588 | time: 0.050) l_pix: 1.347386 l_sim: -3.245291 l_smt: 0.149310 l_tot: -1.748594
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 261/588 | time: 0.047) l_pix: 0.953241 l_sim: -2.977890 l_smt: 0.355887 l_tot: -1.668761
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 262/588 | time: 0.048) l_pix: 1.015747 l_sim: -2.349527 l_smt: 0.339358 l_tot: -0.994421
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 263/588 | time: 0.047) l_pix: 0.956641 l_sim: -2.180330 l_smt: 0.363825 l_tot: -0.859864
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 264/588 | time: 0.045) l_pix: 1.030744 l_sim: -2.756339 l_smt: 0.278697 l_tot: -1.446898
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 265/588 | time: 0.048) l_pix: 1.274104 l_sim: -2.988337 l_smt: 0.134717 l_tot: -1.579516
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 266/588 | time: 0.045) l_pix: 1.032573 l_sim: -2.665581 l_smt: 0.281054 l_tot: -1.351954
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 267/588 | time: 0.045) l_pix: 0.951220 l_sim: -2.670010 l_smt: 0.371356 l_tot: -1.347435
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 268/588 | time: 0.045) l_pix: 0.983095 l_sim: -2.257598 l_smt: 0.335173 l_tot: -0.939331
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 269/588 | time: 0.045) l_pix: 1.096688 l_sim: -2.687228 l_smt: 0.268188 l_tot: -1.322353
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 270/588 | time: 0.045) l_pix: 0.956318 l_sim: -2.309744 l_smt: 0.372595 l_tot: -0.980831
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 271/588 | time: 0.044) l_pix: 1.162786 l_sim: -3.761916 l_smt: 0.200195 l_tot: -2.398935
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 272/588 | time: 0.045) l_pix: 1.060074 l_sim: -2.932459 l_smt: 0.288529 l_tot: -1.583856
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 273/588 | time: 0.050) l_pix: 0.976311 l_sim: -2.987187 l_smt: 0.350484 l_tot: -1.660391
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 274/588 | time: 0.049) l_pix: 1.332841 l_sim: -2.507874 l_smt: 0.123287 l_tot: -1.051746
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 275/588 | time: 0.054) l_pix: 1.165484 l_sim: -2.555896 l_smt: 0.196161 l_tot: -1.194251
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 276/588 | time: 0.051) l_pix: 0.970779 l_sim: -2.900785 l_smt: 0.377222 l_tot: -1.552783
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 277/588 | time: 0.050) l_pix: 0.992908 l_sim: -2.123590 l_smt: 0.323871 l_tot: -0.806811
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 278/588 | time: 0.051) l_pix: 0.943284 l_sim: -2.432760 l_smt: 0.361482 l_tot: -1.127994
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 279/588 | time: 0.052) l_pix: 0.958326 l_sim: -2.487246 l_smt: 0.356730 l_tot: -1.172191
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 280/588 | time: 0.049) l_pix: 0.998913 l_sim: -2.882775 l_smt: 0.333263 l_tot: -1.550599
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 281/588 | time: 0.046) l_pix: 0.941981 l_sim: -3.318371 l_smt: 0.370780 l_tot: -2.005609
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 282/588 | time: 0.047) l_pix: 1.112442 l_sim: -2.367414 l_smt: 0.206240 l_tot: -1.048731
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 283/588 | time: 0.047) l_pix: 1.325880 l_sim: -2.697459 l_smt: 0.121328 l_tot: -1.250251
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 284/588 | time: 0.046) l_pix: 0.984242 l_sim: -2.812823 l_smt: 0.332220 l_tot: -1.496361
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 285/588 | time: 0.053) l_pix: 0.978075 l_sim: -3.167860 l_smt: 0.329979 l_tot: -1.859805
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 286/588 | time: 0.049) l_pix: 1.001423 l_sim: -3.000038 l_smt: 0.290875 l_tot: -1.707740
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 287/588 | time: 0.046) l_pix: 0.935887 l_sim: -2.797117 l_smt: 0.357529 l_tot: -1.503701
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 288/588 | time: 0.046) l_pix: 0.968371 l_sim: -2.703921 l_smt: 0.345599 l_tot: -1.389951
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 289/588 | time: 0.046) l_pix: 0.947019 l_sim: -2.262961 l_smt: 0.357454 l_tot: -0.958488
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 290/588 | time: 0.051) l_pix: 1.246798 l_sim: -2.691123 l_smt: 0.145811 l_tot: -1.298515
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 291/588 | time: 0.050) l_pix: 1.150874 l_sim: -3.016854 l_smt: 0.167000 l_tot: -1.698980
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 292/588 | time: 0.045) l_pix: 0.961791 l_sim: -2.688499 l_smt: 0.342364 l_tot: -1.384344
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 293/588 | time: 0.049) l_pix: 1.453433 l_sim: -2.738525 l_smt: 0.127975 l_tot: -1.157118
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 294/588 | time: 0.053) l_pix: 0.961455 l_sim: -2.763226 l_smt: 0.337657 l_tot: -1.464114
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 295/588 | time: 0.053) l_pix: 0.946273 l_sim: -2.528825 l_smt: 0.329709 l_tot: -1.252843
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 296/588 | time: 0.048) l_pix: 0.939109 l_sim: -2.889677 l_smt: 0.327428 l_tot: -1.623140
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 297/588 | time: 0.053) l_pix: 0.937693 l_sim: -2.674786 l_smt: 0.330933 l_tot: -1.406160
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 298/588 | time: 0.046) l_pix: 0.963321 l_sim: -2.419729 l_smt: 0.331520 l_tot: -1.124888
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 299/588 | time: 0.047) l_pix: 0.999671 l_sim: -2.982106 l_smt: 0.285828 l_tot: -1.696607
+torch.Size([1, 128, 128])
+(epoch: 1 | iters: 300/588 | time: 0.056) l_pix: 0.953259 l_sim: -2.713994 l_smt: 0.321791 l_tot: -1.438944
+(Train - epoch: 1 | iters: 300/588 | time: 0.056) l_pix: 0.953259 l_sim: -2.713994 l_smt: 0.321791 l_tot: -1.438944
+Traceback (most recent call last):
+  File "/home/eva-isr/FSDiffReg/train_wb.py", line 77, in <module>
+    visualizer.print_current_errors(current_epoch, istep+1, training_iters, logs, t, 'Train')
+  File "/home/eva-isr/FSDiffReg/util/visualizer.py", line 126, in print_current_errors
+    with open(self.log_name, "a") as log_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'experiments/FSDiffReg_2D_241031_145432/checkpoint/loss_log.txt'
