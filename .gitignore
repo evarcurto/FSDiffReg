@@ -22,3 +22,4 @@ test_debug.py
 wandb/
 wandb_test.py
 x_IN_out.png
+*.pyc
